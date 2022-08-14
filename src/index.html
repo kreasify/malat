@@ -533,6 +533,88 @@
       </div>
     </section>
 
+    <!-- testimony section -->
+    <section x-data='{
+        reviews: [
+          { "id": 0, "name": "ROBERTA FLANNAGAN", "position": "Personal workout", "image": "testimonial_07.png", "width": "110", "text": "A mountain of excuses, or a mountain of motivation. Every mountain conquered start with one step, tall the mountain, it cannot block the sun." },
+          { "id": 1, "name": "SYLVIA RINSKY", "position": "Recreational climber", "image": "testimonial_08.png", "width": "90", "text": "The choices we make lead up to experiences make actual. It is one thing to decide to climb a mountain. It is quite another to be on top of it." },
+          { "id": 2, "name": "ROBERT MULLINGAN", "position": "Recreational climber", "image": "testimonial_09.png", "width": "150", "text": "A mountain of excuses, or a mountain of motivation. Every mountain conquered start with one step, tall the mountain, it cannot block the sun." }
+        ],
+        point: 0,
+        init() {
+          setInterval(() => {
+            if(this.point < this.reviews.length - 1){
+              this.point ++;
+            }else{
+              this.point = 0;
+            }
+          }, 3000);
+        }
+      }' class="bg-white relative bg-no-repeat bg-cover bg-center bg-[url('/assets/images/image-5.jpg')]">
+      <div class="container max-w-screen-xl mx-auto px-6 lg:px-16 py-16">
+        <div class="flex">
+          <template x-for="review in reviews" :key="review.id">
+            <div>
+              <blockquote x-text="review.text"></blockquote>
+            </div>
+          </template>
+        </div>
+        <div class="">
+          <ul class="flex items-center space-x-2 cursor-pointer">
+            <template x-for="review in reviews" :key="review.id">
+              <li x-on:click="point = review.id">
+                <div class="w-6 h-6 bg-[#f41e1e]"
+                  :class="review.id == point ? 'opacity-100' : 'opacity-30 hover:opacity-100'"></div>
+              </li>
+            </template>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+        <!-- services section -->
+        <section class="bg-white relative">
+          <div class="container max-w-screen-xl mx-auto px-6 lg:px-16 py-16">
+            <div class="flex items-center justify-center py-16 relative font-bold font-[Montserrat]">
+              <span class="text-4xl">Latest News</span>
+              <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                <span class="text-black/10 text-8xl">L</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-6">
+              <div>
+                <article>
+                  <div class="mb-4">
+                    <img src="/assets/images/blog-1.jpg" alt="">
+                  </div>
+                  <p class="mb-2"><small>May 27, 2019</small></p>
+                  <h3 class="text-xl text-gray-900 hover:text-indigo-600 font-bold font-[Montserrat] mb-3"><a class="text-current" href="">Building an enduring online audience</a></h3>
+                  <p>Quisque ultrices non velit sit amet consectetur. Cras turpis dolor, facilisis a nibh non, ullamcorper facilisis mauris. Nulla rutrum arcu.</p>
+                </article>
+              </div>
+              <div>
+                <article>
+                  <div class="mb-4">
+                    <img src="/assets/images/blog-2.jpg" alt="">
+                  </div>
+                  <p class="mb-2"><small>May 20, 2019</small></p>
+                  <h3 class="text-xl text-gray-900 hover:text-indigo-600 font-bold font-[Montserrat] mb-3"><a class="text-current" href="">Building a site for your small business</a></h3>
+                  <p>Quisque ultrices non velit sit amet consectetur. Cras turpis dolor, facilisis a nibh non, ullamcorper facilisis mauris. Nulla rutrum arcu.</p>
+                </article>
+              </div>
+              <div>
+                <article>
+                  <div class="mb-4">
+                    <img src="/assets/images/blog-3.jpg" alt="">
+                  </div>
+                  <p class="mb-2"><small>May 13, 2019</small></p>
+                  <h3 class="text-xl text-gray-900 hover:text-indigo-600 font-bold font-[Montserrat] mb-3"><a class="text-current" href="">A day in the life of a fitness blogger</a></h3>
+                  <p>Quisque ultrices non velit sit amet consectetur. Cras turpis dolor, facilisis a nibh non, ullamcorper facilisis mauris. Nulla rutrum arcu.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </section>
 
 
 
