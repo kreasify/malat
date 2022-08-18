@@ -563,16 +563,17 @@
 
     <!-- portfolio section -->
     <section id="portfolio" x-data='{
+      tab: 0,
       projects: [
         { "id": 0, "title": "Love", "tags": "web", "image": "project-1.jpg" },
         { "id": 1, "title": "Beach", "tags": "web", "image": "project-2.jpg" },
         { "id": 2, "title": "Adventure", "tags": "web", "image": "project-3.jpg" },
-        { "id": 3, "title": "Beautiful Girl - Gallery", "tags": "Brand", "image": "project-4.jpg" },
-        { "id": 4, "title": "Golden Gate Bridge", "tags": "Design", "image": "project-5.jpg" },
-        { "id": 5, "title": "Waterfall", "tags": "Web", "image": "project-6.jpg" },
-        { "id": 6, "title": "Future City - Youtube Iframe", "tags": "Web", "image": "project-7.jpg" },
-        { "id": 7, "title": "Mountains", "tags": "Web", "image": "project-8.jpg" },
-        { "id": 8, "title": "Sea", "tags": "Web", "image": "project-9.jpg" },
+        { "id": 3, "title": "Beautiful Girl - Gallery", "tags": "brand", "image": "project-4.jpg" },
+        { "id": 4, "title": "Golden Gate Bridge", "tags": "design", "image": "project-5.jpg" },
+        { "id": 5, "title": "Waterfall", "tags": "web", "image": "project-6.jpg" },
+        { "id": 6, "title": "Future City - Youtube Iframe", "tags": "web", "image": "project-7.jpg" },
+        { "id": 7, "title": "Mountains", "tags": "web", "image": "project-8.jpg" },
+        { "id": 8, "title": "Sea", "tags": "web", "image": "project-9.jpg" },
       ],
       point: 0,
       init() {
@@ -590,6 +591,16 @@
           <span class="text-4xl">Portfolio</span>
           <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
             <span class="text-black/10 text-8xl">P</span>
+          </div>
+        </div>
+        <div class="text-center pb-6">
+          <div
+            class="inline-flex items-center justify-center"
+            :class="tab == 3 ? 'tiga' : (tab == 2 ? 'dua' : (tab == 1 ? 'satu' : 'nol'))">
+            <button @click="tab = 0" class="text-sm font-medium border-b-2 border-solid relative after:absolute after:content-[''] after:w-[2px] after:h-[18px] after:scale-y-0 after:right-0 after:-bottom-[1px] after:transition-all after:duration-300 after:ease-[ease] after:origin-bottom pb-2 pr-8 transition-all duration-300 ease-[ease] mr-6" :class="tab == 0 ? 'text-blue-500 border-blue-500 after:bg-blue-500 after:scale-y-100' : 'border-black'">All</button>
+            <button @click="tab = 1" class="text-sm font-medium border-b-2 border-solid relative after:absolute after:content-[''] after:w-[2px] after:h-[18px] after:scale-y-0 after:right-0 after:-bottom-[1px] after:transition-all after:duration-300 after:ease-[ease] after:origin-bottom pb-2 pr-8 transition-all duration-300 ease-[ease] mr-6" :class="tab == 1 ? 'text-blue-500 border-blue-500 after:bg-blue-500 after:scale-y-100' : 'border-black'">Web</button>
+            <button @click="tab = 2" class="text-sm font-medium border-b-2 border-solid relative after:absolute after:content-[''] after:w-[2px] after:h-[18px] after:scale-y-0 after:right-0 after:-bottom-[1px] after:transition-all after:duration-300 after:ease-[ease] after:origin-bottom pb-2 pr-8 transition-all duration-300 ease-[ease] mr-6" :class="tab == 2 ? 'text-blue-500 border-blue-500 after:bg-blue-500 after:scale-y-100' : 'border-black'">Brand</button>
+            <button @click="tab = 3" class="text-sm font-medium border-b-2 border-solid relative after:absolute after:content-[''] after:w-[2px] after:h-[18px] after:scale-y-0 after:right-0 after:-bottom-[1px] after:transition-all after:duration-300 after:ease-[ease] after:origin-bottom pb-2 pr-8 transition-all duration-300 ease-[ease]" :class="tab == 3 ? 'text-blue-500 border-blue-500 after:bg-blue-500 after:scale-y-100' : 'border-black'">Design</button>
           </div>
         </div>
         <div class="columns-3 gap-4">
