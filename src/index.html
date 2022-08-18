@@ -614,11 +614,11 @@
           <template x-for="(project, index) in projects" :key="project.id">
             <div x-show="tab == 'all' || tab == project.tags" x-transition:enter="transition ease-[ease] duration-500"
               x-transition:enter-start="opacity-0 scale-0" x-transition:enter-end="opacity-100 scale-100"
-              x-transition:leave="transition ease-[ease] duration-500"
-              x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-100 scale-0"
-              class="relative group mb-4">
+              x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100 scale-100"
+              x-transition:leave-end="opacity-100 scale-0" class="relative group mb-4">
               <img :src="`/assets/images/${project.image}`" :alt="project.title">
-              <div class="absolute left-0 top-0 w-full h-full px-6 py-6 overflow-hidden group-hover:bg-slate-900/70 transition-all duration-500 ease-[ease] flex items-end">
+              <div
+                class="absolute left-0 top-0 w-full h-full px-6 py-6 overflow-hidden group-hover:bg-slate-900/70 transition-all duration-500 ease-[ease] flex items-end">
                 <div class="text-white font-bold">
                   <h4 class="mb-3" x-text="project.title"></h4>
                   <p class="italic" x-text="project.tags"></p>
@@ -633,9 +633,9 @@
     <!-- testimony section -->
     <section x-data='{
         reviews: [
-          { "id": 0, "name": "ROBERTA FLANNAGAN", "position": "Personal workout", "image": "testimonial_07.png", "width": "110", "text": "A mountain of excuses, or a mountain of motivation. Every mountain conquered start with one step, tall the mountain, it cannot block the sun." },
-          { "id": 1, "name": "SYLVIA RINSKY", "position": "Recreational climber", "image": "testimonial_08.png", "width": "90", "text": "The choices we make lead up to experiences make actual. It is one thing to decide to climb a mountain. It is quite another to be on top of it." },
-          { "id": 2, "name": "ROBERT MULLINGAN", "position": "Recreational climber", "image": "testimonial_09.png", "width": "150", "text": "A mountain of excuses, or a mountain of motivation. Every mountain conquered start with one step, tall the mountain, it cannot block the sun." }
+          { "id": 0, "name": "Jessica Nelson", "position": "Director Business Planning, Amazon", "image": "avatar_small.jpg", "text": "Nulla consequat nulla vitae enim venenatis, vel vulputate mi commodo. Pellentesque consequat at justo quis vulputate. Maecenas elementum metus eu maximus auctor. Morbi ultrices quam rhoncus purus bibendum ornare. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." },
+          { "id": 1, "name": "Jessica Nelson", "position": "Director Business Planning, Amazon", "image": "avatar_small.jpg", "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
+          { "id": 2, "name": "Jessica Nelson", "position": "Director Business Planning, Amazon", "image": "avatar_small.jpg", "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." }
         ],
         point: 0,
         init() {
@@ -647,24 +647,37 @@
             }
           }, 3000);
         }
-      }' class="bg-white relative bg-no-repeat bg-cover bg-center bg-[url('/assets/images/image-5.jpg')]">
-      <div class="container max-w-screen-xl mx-auto px-6 lg:px-16 py-16">
-        <div class="flex">
-          <template x-for="review in reviews" :key="review.id">
-            <div>
-              <blockquote x-text="review.text"></blockquote>
+      }' class="bg-white relative bg-no-repeat bg-cover bg-center bg-[url('/assets/images/image-1.jpg')]">
+      <div class="bg-black/60">
+        <div class="container max-w-4xl mx-auto px-6 py-24">
+            <div class="relative w-full flex group overflow-hidden">
+              <template x-for="review in reviews" :key="review.id">
+                <div class="w-full -mr-[100%]" :class="review.id == point ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'">
+                  <div class="text-white mb-8">
+                    <svg class="w-8 h-8 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                      <path
+                        d="M96 96C42.98 96 0 138.1 0 192s42.98 96 96 96c11.28 0 21.95-2.305 32-5.879V288c0 35.3-28.7 64-64 64c-17.67 0-32 14.33-32 32s14.33 32 32 32c70.58 0 128-57.42 128-128V192C192 138.1 149 96 96 96zM448 192c0-53.02-42.98-96-96-96s-96 42.98-96 96s42.98 96 96 96c11.28 0 21.95-2.305 32-5.879V288c0 35.3-28.7 64-64 64c-17.67 0-32 14.33-32 32s14.33 32 32 32c70.58 0 128-57.42 128-128V192z" />
+                    </svg>
+                  </div>
+                  <div class="text-white text-center">
+                    <blockquote x-text="review.text"></blockquote>
+                    <div class="inline-flex space-x-4 pt-6">
+                      <div class="flex-none w-12 h-12 rounded-full overflow-hidden">
+                        <img :src="`assets/images/${review.image}`" :alt="review.name">
+                      </div>
+                      <div class="text-left">
+                        <h4 class="font-bold mb-1" x-text="review.name"></h4>
+                        <p><small x-text="review.position"></small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- <li x-on:click="point = review.id">
+                  <div class="w-6 h-6 bg-[#f41e1e]"
+                    :class="review.id == point ? 'opacity-100' : 'opacity-30 hover:opacity-100'"></div>
+                </li> -->
+              </template>
             </div>
-          </template>
-        </div>
-        <div class="">
-          <ul class="flex items-center space-x-2 cursor-pointer">
-            <template x-for="review in reviews" :key="review.id">
-              <li x-on:click="point = review.id">
-                <div class="w-6 h-6 bg-[#f41e1e]"
-                  :class="review.id == point ? 'opacity-100' : 'opacity-30 hover:opacity-100'"></div>
-              </li>
-            </template>
-          </ul>
         </div>
       </div>
     </section>
