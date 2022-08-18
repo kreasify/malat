@@ -613,14 +613,16 @@
         <div class="columns-3 gap-4">
           <template x-for="(project, index) in projects" :key="project.id">
             <div x-show="tab == 'all' || tab == project.tags" x-transition:enter="transition ease-[ease] duration-500"
-              x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
-              x-transition:leave="transition ease-[ease] duration-200"
-              x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-100"
-              class="relative mb-4">
+              x-transition:enter-start="opacity-0 scale-0" x-transition:enter-end="opacity-100 scale-100"
+              x-transition:leave="transition ease-[ease] duration-500"
+              x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-100 scale-0"
+              class="relative group mb-4">
               <img :src="`/assets/images/${project.image}`" :alt="project.title">
-              <div class="absolute bottom-0 left-0 w-full px-6 pb-6 text-white font-bold">
-                <h4 class="mb-3" x-text="project.title"></h4>
-                <p class="italic" x-text="project.tags"></p>
+              <div class="absolute left-0 top-0 w-full h-full px-6 py-6 overflow-hidden group-hover:bg-slate-900/70 transition-all duration-500 ease-[ease] flex items-end">
+                <div class="text-white font-bold">
+                  <h4 class="mb-3" x-text="project.title"></h4>
+                  <p class="italic" x-text="project.tags"></p>
+                </div>
               </div>
             </div>
           </template>
