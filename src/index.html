@@ -100,7 +100,7 @@
       <div class="nav__brand text-center pt-8">
         <div class="flex items-center justify-center py-12 relative">
           <a class="nav__brand-link font-bold font-[Montserrat]" href="/" title="Back to home">
-            <span class="text-2xl">Amanda Malat</span><span x-text="atElement"></span>
+            <span class="text-2xl">Amanda Malat</span>
             <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
               <span class="text-black/10 text-8xl">A</span>
             </div>
@@ -130,31 +130,37 @@
               {
                 id: 1,
                 label: "Home",
+                element: "home",
                 url: "/"
               },
               {
                 id: 2,
                 label: "About",
+                element: "about",
                 url: "about"
               },
               {
                 id: 3,
                 label: "Services",
+                element: "services",
                 url: "services"
               },
               {
                 id: 4,
                 label: "Portfolio",
+                element: "portfolio",
                 url: "portfolio"
               },
               {
                 id: 5,
                 label: "News",
+                element: "news",
                 url: "news"
               },
               {
                 id: 6,
                 label: "Contact",
+                element: "contact",
                 url: "contact",
               }
             ]
@@ -163,8 +169,8 @@
           <ul class="menu">
 
             <template x-for="(menu, index) in menus" :key="menu.id">
-              <li @click="selectedMenu !== index ? selectedMenu = index : selectedMenu = null" class="menu__item">
-                <a class="menu__item-link block font-medium px-4 py-2 border-l border-blue-500" :href="menu.url" x-text="menu.label"></a>
+              <li @click="selectedMenu !== index ? selectedMenu = index : selectedMenu = null" class="menu__item my-3">
+                <a class="menu__item-link block font-medium leading-none px-4 py-1 border-l-2 transition-all duration-300 ease-in-out" :class="atElement===menu.element ? 'text-blue-500 border-blue-500' : 'border-transparent'" :href="menu.url" x-text="menu.label"></a>
               </li>
             </template>
 
