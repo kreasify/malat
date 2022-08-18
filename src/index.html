@@ -253,27 +253,27 @@
       class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/assets/images/image-1.jpg')]">
     </div>
     <div x-show="point == 1" x-transition:enter="transition ease-[ease] duration-[2000ms]"
-    x-transition:enter-start="opacity-0 scale-110" x-transition:enter-end="opacity-100 scale-100"
-    x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
+      x-transition:enter-start="opacity-0 scale-110" x-transition:enter-end="opacity-100 scale-100"
+      x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
       class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/assets/images/image-2.jpg')]">
     </div>
     <div x-show="point == 2" x-transition:enter="transition ease-[ease] duration-[2000ms]"
-    x-transition:enter-start="opacity-0 scale-110" x-transition:enter-end="opacity-100 scale-100"
-    x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
+      x-transition:enter-start="opacity-0 scale-110" x-transition:enter-end="opacity-100 scale-100"
+      x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
       class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/assets/images/image-3.jpg')]">
     </div>
     <div x-show="point == 3" x-transition:enter="transition ease-[ease] duration-[2000ms]"
-    x-transition:enter-start="opacity-0 scale-110" x-transition:enter-end="opacity-100 scale-100"
-    x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
+      x-transition:enter-start="opacity-0 scale-110" x-transition:enter-end="opacity-100 scale-100"
+      x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
       class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/assets/images/image-4.jpg')]">
     </div>
     <div x-show="point == 4" x-transition:enter="transition ease-[ease] duration-[2000ms]"
-    x-transition:enter-start="opacity-0 scale-110" x-transition:enter-end="opacity-100 scale-100"
-    x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100"
-    x-transition:leave-end="opacity-0"
+      x-transition:enter-start="opacity-0 scale-110" x-transition:enter-end="opacity-100 scale-100"
+      x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
       class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/assets/images/image-5.jpg')]">
     </div>
   </section>
@@ -563,7 +563,7 @@
 
     <!-- portfolio section -->
     <section id="portfolio" x-data='{
-      tab: 0,
+      tab: "all",
       projects: [
         { "id": 0, "title": "Love", "tags": "web", "image": "project-1.jpg" },
         { "id": 1, "title": "Beach", "tags": "web", "image": "project-2.jpg" },
@@ -594,18 +594,29 @@
           </div>
         </div>
         <div class="text-center pb-6">
-          <div
-            class="inline-flex items-center justify-center"
-            :class="tab == 3 ? 'tiga' : (tab == 2 ? 'dua' : (tab == 1 ? 'satu' : 'nol'))">
-            <button @click="tab = 0" class="text-sm font-medium border-b-2 border-solid relative after:absolute after:content-[''] after:w-[2px] after:h-[18px] after:scale-y-0 after:right-0 after:-bottom-[1px] after:transition-all after:duration-300 after:ease-[ease] after:origin-bottom pb-2 pr-8 transition-all duration-300 ease-[ease] mr-6" :class="tab == 0 ? 'text-blue-500 border-blue-500 after:bg-blue-500 after:scale-y-100' : 'border-black'">All</button>
-            <button @click="tab = 1" class="text-sm font-medium border-b-2 border-solid relative after:absolute after:content-[''] after:w-[2px] after:h-[18px] after:scale-y-0 after:right-0 after:-bottom-[1px] after:transition-all after:duration-300 after:ease-[ease] after:origin-bottom pb-2 pr-8 transition-all duration-300 ease-[ease] mr-6" :class="tab == 1 ? 'text-blue-500 border-blue-500 after:bg-blue-500 after:scale-y-100' : 'border-black'">Web</button>
-            <button @click="tab = 2" class="text-sm font-medium border-b-2 border-solid relative after:absolute after:content-[''] after:w-[2px] after:h-[18px] after:scale-y-0 after:right-0 after:-bottom-[1px] after:transition-all after:duration-300 after:ease-[ease] after:origin-bottom pb-2 pr-8 transition-all duration-300 ease-[ease] mr-6" :class="tab == 2 ? 'text-blue-500 border-blue-500 after:bg-blue-500 after:scale-y-100' : 'border-black'">Brand</button>
-            <button @click="tab = 3" class="text-sm font-medium border-b-2 border-solid relative after:absolute after:content-[''] after:w-[2px] after:h-[18px] after:scale-y-0 after:right-0 after:-bottom-[1px] after:transition-all after:duration-300 after:ease-[ease] after:origin-bottom pb-2 pr-8 transition-all duration-300 ease-[ease]" :class="tab == 3 ? 'text-blue-500 border-blue-500 after:bg-blue-500 after:scale-y-100' : 'border-black'">Design</button>
+          <div class="inline-flex items-center justify-center"
+            :class="tab == 'design' ? 'design' : (tab == 'brand' ? 'brand' : (tab == 'web' ? 'web' : 'all'))">
+            <button @click="tab = 'all'"
+              class="text-sm font-medium border-b-2 border-solid relative after:absolute after:content-[''] after:w-[2px] after:h-[18px] after:scale-y-0 after:right-0 after:-bottom-[1px] after:transition-all after:duration-300 after:ease-[ease] after:origin-bottom pb-2 pr-8 transition-all duration-300 ease-[ease] mr-6"
+              :class="tab == 'all' ? 'text-blue-500 border-blue-500 after:bg-blue-500 after:scale-y-100' : 'border-black'">All</button>
+            <button @click="tab = 'web'"
+              class="text-sm font-medium border-b-2 border-solid relative after:absolute after:content-[''] after:w-[2px] after:h-[18px] after:scale-y-0 after:right-0 after:-bottom-[1px] after:transition-all after:duration-300 after:ease-[ease] after:origin-bottom pb-2 pr-8 transition-all duration-300 ease-[ease] mr-6"
+              :class="tab == 'web' ? 'text-blue-500 border-blue-500 after:bg-blue-500 after:scale-y-100' : 'border-black'">Web</button>
+            <button @click="tab = 'brand'"
+              class="text-sm font-medium border-b-2 border-solid relative after:absolute after:content-[''] after:w-[2px] after:h-[18px] after:scale-y-0 after:right-0 after:-bottom-[1px] after:transition-all after:duration-300 after:ease-[ease] after:origin-bottom pb-2 pr-8 transition-all duration-300 ease-[ease] mr-6"
+              :class="tab == 'brand' ? 'text-blue-500 border-blue-500 after:bg-blue-500 after:scale-y-100' : 'border-black'">Brand</button>
+            <button @click="tab = 'design'"
+              class="text-sm font-medium border-b-2 border-solid relative after:absolute after:content-[''] after:w-[2px] after:h-[18px] after:scale-y-0 after:right-0 after:-bottom-[1px] after:transition-all after:duration-300 after:ease-[ease] after:origin-bottom pb-2 pr-8 transition-all duration-300 ease-[ease]"
+              :class="tab == 'design' ? 'text-blue-500 border-blue-500 after:bg-blue-500 after:scale-y-100' : 'border-black'">Design</button>
           </div>
         </div>
         <div class="columns-3 gap-4">
-          <template x-for="project in projects" :key="project.id">
-            <div class="relative mb-4">
+          <template x-for="(project, index) in projects" :key="project.id">
+            <div x-show="tab == 'all' || tab == project.tags" x-transition:enter="transition ease-[ease] duration-500"
+              x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100"
+              x-transition:leave="transition ease-[ease] duration-200"
+              x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-100"
+              class="relative mb-4">
               <img :src="`/assets/images/${project.image}`" :alt="project.title">
               <div class="absolute bottom-0 left-0 w-full px-6 pb-6 text-white font-bold">
                 <h4 class="mb-3" x-text="project.title"></h4>
