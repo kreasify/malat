@@ -95,19 +95,19 @@
 <body x-data="{sideNav: false, atTop: true, atElement: 'home'}" class="font-[roboto]" :class="{ 'overflow-hidden': sideNav }" @scroll.window="atElement = document.querySelector('#contact').getBoundingClientRect().top <= 0 ? 'contact' : (document.querySelector('#news').getBoundingClientRect().top <= 0 ? 'news' : (document.querySelector('#portfolio').getBoundingClientRect().top <= 0 ? 'portfolio' : (document.querySelector('#services').getBoundingClientRect().top <= 0 ? 'services' : (document.querySelector('#about').getBoundingClientRect().top <= 0 ? 'about' : 'home'))))">
 
   <!-- header menu -->
-  <header class="header fixed left-0 top-0 bottom-0 w-80 bg-white z-50 overflow-y-auto">
+  <header class="header fixed left-0 top-0 bottom-0 w-80 bg-gray-50 z-50 overflow-y-auto">
     <div class="nav__wrapper">
       <div class="nav__brand text-center pt-8">
         <div class="flex items-center justify-center py-12 relative">
           <a class="nav__brand-link font-bold font-[Montserrat]" href="/" title="Back to home">
-            <span class="text-2xl">Amanda Malat</span>
+            <span class="text-2xl">Amanda Malat</span><span x-text="atElement"></span>
             <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
               <span class="text-black/10 text-8xl">A</span>
             </div>
           </a>
         </div>
       </div>
-      <div class="w-[1px] h-14 mx-auto bg-gray-300 my-10"></div>
+      <div class="w-[1px] h-14 mx-auto bg-gray-300 my-8"></div>
       <div class="nav__toggle h-8 flex items-center justify-end lg:hidden">
         <button @click="sideNav = !sideNav"
           class="cursor-pointer border-none outline-none focus:outline-none focus:bg-transparent transition-all duration-300 ease-[ease] z-30"
@@ -164,15 +164,15 @@
 
             <template x-for="(menu, index) in menus" :key="menu.id">
               <li @click="selectedMenu !== index ? selectedMenu = index : selectedMenu = null" class="menu__item">
-                <a class="menu__item-link block px-4 py-2" :href="menu.url" x-text="menu.label"></a>
+                <a class="menu__item-link block font-medium px-4 py-2 border-l border-blue-500" :href="menu.url" x-text="menu.label"></a>
               </li>
             </template>
 
           </ul>
         </nav>
       </div>
-      <div class="w-[1px] h-14 mx-auto bg-gray-300 my-10"></div>
-      <div class="social__link mb-20">
+      <div class="w-[1px] h-14 mx-auto bg-gray-300 my-8"></div>
+      <div class="social__link mb-16">
         <ul class="flex items-center justify-center space-x-4">
           <li>
             <a class="text-black hover:text-white hover:bg-black w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-300 ease-in-out"
@@ -230,7 +230,7 @@
     </div>
   </section>
 
-  <div class="relative ml-80">
+  <div class="relative ml-80 shadow-[0_0_320px_rgb(0_0_0_/_3%),_0_0_27px_rgb(0_0_0_/_20%)] z-10">
     <section>
       <div class="absolute top-0 left-0 right-0 bottom-0 bg-slate-900/50"></div>
     </section>
@@ -289,7 +289,7 @@
                 <p>Women in Business, 2010</p>
               </div>
               <div class="pt-8">
-                <a class="text-white bg-indigo-500 hover:bg-indigo-600 font-medium py-3 px-6 rounded-md transition-colors duration-300 ease-in-out mr-1"
+                <a class="text-white bg-blue-500 hover:bg-blue-600 font-medium py-3 px-6 rounded-md transition-colors duration-300 ease-in-out mr-1"
                   href="">Download CV</a>
                 <a class="text-gray-700 bg-gray-100 hover:bg-gray-200 font-medium py-3 px-6 rounded-md transition-colors duration-300 ease-in-out"
                   href="">Send Message</a>
@@ -318,13 +318,13 @@
             <div class="text-gray-700 font-bold mb-6">
               <p class="mb-2">Social Media</p>
               <div class="bg-gray-200 h-1">
-                <div class="bg-indigo-500 w-[85%] h-1"></div>
+                <div class="bg-blue-500 w-[85%] h-1"></div>
               </div>
             </div>
             <div class="text-gray-700 font-bold mb-6">
               <p class="mb-2">Project Management</p>
               <div class="bg-gray-200 h-1">
-                <div class="bg-indigo-500 w-[75%] h-1"></div>
+                <div class="bg-blue-500 w-[75%] h-1"></div>
               </div>
             </div>
           </div>
@@ -332,13 +332,13 @@
             <div class="text-gray-700 font-bold mb-6">
               <p class="mb-2">Analytical Knowledge</p>
               <div class="bg-gray-200 h-1">
-                <div class="bg-indigo-500 w-[75%] h-1"></div>
+                <div class="bg-blue-500 w-[75%] h-1"></div>
               </div>
             </div>
             <div class="text-gray-700 font-bold mb-6">
               <p class="mb-2">Creativity & Expression</p>
               <div class="bg-gray-200 h-1">
-                <div class="bg-indigo-500 w-[85%] h-1"></div>
+                <div class="bg-blue-500 w-[85%] h-1"></div>
               </div>
             </div>
           </div>
@@ -409,12 +409,11 @@
         </div>
         <div class="grid grid-cols-3 gap-4">
           <div
-            class="relative border border-solid border-gray-300 rounded-md p-4 lg:p-6 group before:absolute before:content-[''] before:-top-[1px] before:-right-[1px] before:w-7 hover:before:w-12 before:h-7 hover:before:h-12 before:border-t-2 before:border-r-2 before:border-indigo-500 before:rounded-tr-md before:transition-all before:duration-300 before:ease-[ease]">
-            <div class="text-indigo-500 mb-4 group-hover:-translate-y-1 transition-all duration-300 ease-in-out">
-              <svg class="w-10 h-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path
-                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-                </path>
+            class="relative border border-solid border-gray-300 rounded-md p-4 lg:p-6 group before:absolute before:content-[''] before:-top-[1px] before:-right-[1px] before:w-7 hover:before:w-12 before:h-7 hover:before:h-12 before:border-t-2 before:border-r-2 before:border-blue-500 before:rounded-tr-md before:transition-all before:duration-300 before:ease-[ease]">
+            <div class="text-blue-500 mb-4 group-hover:-translate-y-1 transition-all duration-300 ease-in-out">
+              <svg id="Layer_1" class="w-10 h-10 fill-current" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 116.45 131.52">
+                <path d="M53.97,15.37V7.79c-2.97,0-5.82-.09-8.67,.03-1.91,.08-2.77-.51-2.6-2.53,.14-1.67,.03-3.37,.03-5.29h30.72c.12,.33,.24,.51,.25,.7q.43,7.09-6.62,7.09c-1.48,0-2.96,0-4.66,0v7.39c35.95,3.13,58.28,35.6,53.34,67.54-4.49,29.03-30.64,50.12-61.11,48.73C25.7,130.14,1.7,106.01,.09,76.8-1.57,46.59,20.29,18.64,53.97,15.37Zm54.52,58.06c.07-27.33-22.39-49.82-49.54-50.25-27.08-.43-50.94,21.59-51.01,50.29-.07,27.37,22.6,50.03,50,50.11,27.84,.08,50.48-22.38,50.55-50.15Z" fill="#375dff"/>
+                <path d="M54.1,76.85c0-4.07,0-8.23,0-12.4,0-5.28,.05-10.56-.03-15.84-.03-1.77,.55-2.43,2.39-2.49,5.75-.17,5.75-.24,5.75,5.46,0,5.84,0,11.69,0,17.8h31.14c0,2.32,.12,4.39-.08,6.42-.06,.58-1.05,1.52-1.62,1.52-12.15,.06-24.31,.01-36.46-.03-.27,0-.54-.22-1.1-.45Z" fill="#375dff"/>
               </svg>
             </div>
             <h3 class="text-xl font-bold font-[Montserrat] mb-3">Launch Quickly</h3>
@@ -422,12 +421,11 @@
               facilisis mauris. Nulla rutrum arcu sed ligula malesuada, quis condimentum eros sollicitudin.</p>
           </div>
           <div
-            class="relative border border-solid border-gray-300 rounded-md p-4 lg:p-6 group before:absolute before:content-[''] before:-top-[1px] before:-right-[1px] before:w-7 hover:before:w-12 before:h-7 hover:before:h-12 before:border-t-2 before:border-r-2 before:border-indigo-500 before:rounded-tr-md before:transition-all before:duration-300 before:ease-[ease]">
-            <div class="text-indigo-500 mb-4 group-hover:-translate-y-1 transition-all duration-300 ease-in-out">
-              <svg class="w-10 h-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path
-                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-                </path>
+            class="relative border border-solid border-gray-300 rounded-md p-4 lg:p-6 group before:absolute before:content-[''] before:-top-[1px] before:-right-[1px] before:w-7 hover:before:w-12 before:h-7 hover:before:h-12 before:border-t-2 before:border-r-2 before:border-blue-500 before:rounded-tr-md before:transition-all before:duration-300 before:ease-[ease]">
+            <div class="text-blue-500 mb-4 group-hover:-translate-y-1 transition-all duration-300 ease-in-out">
+              <svg id="Layer_1" class="w-10 h-10 fill-current" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 131.59 131.59">
+                <path d="M1.22,131.59c1.93-15.33,3.84-30.46,5.79-45.9-2.51-.12-4.55-.22-6.82-.33-.07-.95-.18-1.8-.18-2.65-.01-7.97-.02-15.94,0-23.91,0-6.63,4-11.52,10.55-11.75,11.74-.41,23.51-.27,35.26-.36,.77,0,1.54,0,2.67,0-3.5-11.49-1.57-22.96-1.94-34.32-.24-7.25,4.15-11.9,11.39-12.2,5.47-.23,10.97-.23,16.43,.06,6.33,.33,10.66,5.08,10.7,11.38,.06,8.97,.14,17.93-.06,26.9-.06,2.6-1.04,5.17-1.66,8.05,.94,.05,1.69,.13,2.44,.13,11.76,.1,23.52-.04,35.26,.37,6.42,.22,10.51,5.12,10.53,11.47,.02,8.86,0,17.72,0,26.82-2.3,.11-4.43,.21-7.01,.33,1.95,15.46,3.86,30.59,5.79,45.92H1.22ZM72.13,54.64c.64-2.13,1.17-3.82,1.65-5.52,1.14-4.1,2.97-8.17,3.24-12.34,.52-8.04,.17-16.13,.14-24.2-.01-3.19-1.33-4.48-4.56-4.51-4.49-.04-8.97-.03-13.46,0-3.43,.02-4.7,1.27-4.71,4.66-.03,7.47-.08,14.95,.03,22.42,.03,2.05,.41,4.14,.96,6.12,1.21,4.38,2.62,8.7,4.05,13.37-7.39,0-14.35,0-21.32,0-8.37,0-16.75,0-25.12,0-2.5,0-4.94,.7-5.05,3.52-.26,6.33-.08,12.68-.08,19.13H123.62c0-6.56,.17-12.92-.15-19.26-.06-1.15-2-2.42-3.32-3.2-.83-.49-2.14-.2-3.23-.2-14.74,0-29.49,0-44.78,0ZM22.85,123.76c0-4.34,.13-8.33-.05-12.29-.11-2.41,.76-3.3,3.08-3.04,.69,.08,1.41,.09,2.09,0,2.43-.34,3.1,.72,3,3.06-.17,4.04-.05,8.1-.05,12.22h38.44c0-8.29,0-16.34,0-24.4q0-6.93,7.04-6.32c.17,.02,.34,.18,.84,.46,0,.88,0,1.95,0,3.02,0,8.27-.05,16.54,.07,24.81,.01,.89,.83,2.41,1.48,2.53,1.89,.34,3.87,.12,6.21,.12v-22.98h7.81v22.75h7.84c0-4.02,.22-7.81-.07-11.56-.25-3.17,.95-4.17,3.88-3.69,.39,.06,.8,.05,1.19,0,2.27-.26,3.23,.54,3.12,3-.19,4.05-.05,8.11-.05,12.24h12.44c.03-.65,.1-1.04,.05-1.42-1.42-11.35-2.92-22.69-4.25-34.05-.28-2.36-1.3-2.85-3.48-2.85-31.8,.06-63.6,.07-95.4,0-2.4,0-3.33,.72-3.6,3.11-.91,8.1-2.03,16.18-3.03,24.28-.45,3.61-.8,7.22-1.23,11.04h12.59Z" fill="#375dff"/>
+                <path d="M61.66,15.41c2.38,0,4.45-.13,6.49,.08,.6,.06,1.14,1.03,1.63,1.64,.15,.18,.02,.58,.03,.88,.2,5.42-1.51,6.84-6.79,5.46-.55-.14-1.26-.99-1.31-1.56-.16-2.04-.06-4.11-.06-6.5Z" fill="#375dff"/>
               </svg>
             </div>
             <h3 class="text-xl font-bold font-[Montserrat] mb-3">Stylish Design</h3>
@@ -435,12 +433,10 @@
               facilisis mauris. Nulla rutrum arcu sed ligula malesuada, quis condimentum eros sollicitudin.</p>
           </div>
           <div
-            class="relative border border-solid border-gray-300 rounded-md p-4 lg:p-6 group before:absolute before:content-[''] before:-top-[1px] before:-right-[1px] before:w-7 hover:before:w-12 before:h-7 hover:before:h-12 before:border-t-2 before:border-r-2 before:border-indigo-500 before:rounded-tr-md before:transition-all before:duration-300 before:ease-[ease]">
-            <div class="text-indigo-500 mb-4 group-hover:-translate-y-1 transition-all duration-300 ease-in-out">
-              <svg class="w-10 h-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path
-                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-                </path>
+            class="relative border border-solid border-gray-300 rounded-md p-4 lg:p-6 group before:absolute before:content-[''] before:-top-[1px] before:-right-[1px] before:w-7 hover:before:w-12 before:h-7 hover:before:h-12 before:border-t-2 before:border-r-2 before:border-blue-500 before:rounded-tr-md before:transition-all before:duration-300 before:ease-[ease]">
+            <div class="text-blue-500 mb-4 group-hover:-translate-y-1 transition-all duration-300 ease-in-out">
+              <svg id="Layer_1" class="w-10 h-10 fill-current" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 131.39 119.3">
+                <path d="M131.39,3.25V110.6c-2.74-.39-5.34-.74-7.94-1.13-14.54-2.16-29-2.07-43.23,1.99-5.55,1.58-4.54,1.06-4.62,5.96,0,.58-.08,1.15-.13,1.87h-19.44c-.12-.39-.27-.67-.29-.94-.33-5.66-.32-5.69-5.76-7.23-16.09-4.54-32.23-4.53-48.4-.41-.46,.12-.94,.15-1.58,.25V2.98C5.27,2.13,10.61,.96,16.02,.46c16.55-1.53,32.56,.67,47.82,7.57,1,.45,2.6,.47,3.57-.01,10.02-4.98,20.73-6.75,31.77-7.31,10.19-.52,20.28,.16,30.29,2.04,.57,.11,1.13,.29,1.92,.5Zm-7.98,6.65c-.69-.16-1.34-.37-2.01-.45-8.91-1.05-17.84-1.48-26.79-.45-7.73,.89-15.31,2.39-22.47,5.64-1.78,.81-2.54,1.71-2.53,3.75,.07,28.68,.04,57.35,.05,86.03,0,.63,.18,1.25,.31,2.16,17.39-7.13,35.25-7.29,53.44-5.2V9.9ZM7.65,101.13c18.66-2.79,36.49-1.56,53.75,5.75,.08-.84,.15-1.23,.15-1.63,0-29-.02-58,.06-87,0-2.07-1.05-2.73-2.6-3.41-15.44-6.73-31.53-7.82-48.03-5.73-2.55,.32-3.42,1.17-3.41,3.89,.11,28.2,.07,56.41,.07,84.61,0,.98,0,1.96,0,3.51Z" fill="#375dff"/>
               </svg>
             </div>
             <h3 class="text-xl font-bold font-[Montserrat] mb-3">Well Documented</h3>
@@ -448,12 +444,14 @@
               facilisis mauris. Nulla rutrum arcu sed ligula malesuada, quis condimentum eros sollicitudin.</p>
           </div>
           <div
-            class="relative border border-solid border-gray-300 rounded-md p-4 lg:p-6 group before:absolute before:content-[''] before:-top-[1px] before:-right-[1px] before:w-7 hover:before:w-12 before:h-7 hover:before:h-12 before:border-t-2 before:border-r-2 before:border-indigo-500 before:rounded-tr-md before:transition-all before:duration-300 before:ease-[ease]">
-            <div class="text-indigo-500 mb-4 group-hover:-translate-y-1 transition-all duration-300 ease-in-out">
-              <svg class="w-10 h-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path
-                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-                </path>
+            class="relative border border-solid border-gray-300 rounded-md p-4 lg:p-6 group before:absolute before:content-[''] before:-top-[1px] before:-right-[1px] before:w-7 hover:before:w-12 before:h-7 hover:before:h-12 before:border-t-2 before:border-r-2 before:border-blue-500 before:rounded-tr-md before:transition-all before:duration-300 before:ease-[ease]">
+            <div class="text-blue-500 mb-4 group-hover:-translate-y-1 transition-all duration-300 ease-in-out">
+              <svg id="Layer_1" class="w-10 h-10 fill-current" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 131.62 116.4">
+                <path d="M.11,83.42C.08,59.91,.04,36.4,.01,12.89c0-4.17,0-8.34,0-12.82,1.43,0,2.69,0,3.94,0C35.36,.07,66.76,.11,98.16,0c2.83-.01,2.77,1.4,2.77,3.32-.02,26.9-.02,53.8-.03,80.7-30.94,0-61.87,.02-92.81-.02-2.66,0-5.32-.37-7.97-.57Zm7.75-6.58c.17,.16,.34,.32,.52,.48,15.59,.04,31.19,.1,46.78,.1,12.12,0,24.24-.07,36.35-.1,.17-.16,.34-.32,.5-.48,.22-1.03,.62-2.06,.62-3.09,.04-20.71-.02-41.42,.08-62.12,.01-2.86-.78-3.8-3.71-3.79-26,.1-52,.05-78,.06-1.04,0-2.09,.14-3.15,.22V76.84Z" fill="#375dff"/>
+                <path d="M107.67,31.42h23.92v2.54c0,26.39-.02,52.78,.03,79.17,0,2.16-.36,3.27-2.9,3.27-31.99-.07-63.98-.04-95.96-.05-.58,0-1.16-.1-1.95-.18v-22.94h8.08c0,4.05,.1,8.2-.04,12.33-.08,2.2,.63,2.95,2.88,2.95,26.51-.06,53.01-.06,79.52,0,2.01,0,2.48-.67,2.48-2.59-.06-21.21-.08-42.42,0-63.64,.01-2.55-.84-3.27-3.27-3.14-3.38,.19-6.78-.03-10.16,.08-1.91,.06-2.78-.57-2.64-2.56,.11-1.66,.02-3.33,.02-5.22Z" fill="#375dff"/>
+                <path d="M.11,83.42c2.66,.2,5.32,.57,7.97,.57,30.94,.04,61.87,.02,92.81,.02-1.25,.43-2.5,1.24-3.76,1.24-23.21,.08-46.42,.06-69.63,.06-8.37,0-16.74,0-25.1,0-1.26,0-2.82,.31-2.29-1.89Z" fill="#375dff"/>
+                <path d="M7.86,76.84c.17,.16,.34,.32,.52,.48-.17-.16-.34-.32-.52-.48Z" fill="#375dff"/>
+                <path d="M91.52,77.32c.17-.16,.34-.32,.5-.48-.17,.16-.34,.32-.5,.48Z" fill="#375dff"/>
               </svg>
             </div>
             <h3 class="text-xl font-bold font-[Montserrat] mb-3">Multiple Styles</h3>
@@ -461,12 +459,11 @@
               facilisis mauris. Nulla rutrum arcu sed ligula malesuada, quis condimentum eros sollicitudin.</p>
           </div>
           <div
-            class="relative border border-solid border-gray-300 rounded-md p-4 lg:p-6 group before:absolute before:content-[''] before:-top-[1px] before:-right-[1px] before:w-7 hover:before:w-12 before:h-7 hover:before:h-12 before:border-t-2 before:border-r-2 before:border-indigo-500 before:rounded-tr-md before:transition-all before:duration-300 before:ease-[ease]">
-            <div class="text-indigo-500 mb-4 group-hover:-translate-y-1 transition-all duration-300 ease-in-out">
-              <svg class="w-10 h-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path
-                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-                </path>
+            class="relative border border-solid border-gray-300 rounded-md p-4 lg:p-6 group before:absolute before:content-[''] before:-top-[1px] before:-right-[1px] before:w-7 hover:before:w-12 before:h-7 hover:before:h-12 before:border-t-2 before:border-r-2 before:border-blue-500 before:rounded-tr-md before:transition-all before:duration-300 before:ease-[ease]">
+            <div class="text-blue-500 mb-4 group-hover:-translate-y-1 transition-all duration-300 ease-in-out">
+              <svg id="Layer_1" class="w-10 h-10 fill-current" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 131.49 131.37">
+                <path d="M25.07,117.21c-.57-.37-1.21-.65-1.67-1.11-2.68-2.66-5.44-5.27-7.9-8.13-.59-.69-.62-2.44-.18-3.34,2.33-4.73,4.83-9.37,7.42-13.97,.92-1.64,.66-2.92,.22-4.69-1.33-5.41-4.56-8.02-9.96-8.91-3.6-.59-7.1-1.96-10.52-3.29-1.01-.39-2.21-1.8-2.3-2.83-.29-3.46-.11-6.96-.12-10.45,0-1.75,.83-2.59,2.56-3.08,5.07-1.42,10.08-3.09,15.13-4.58,1.73-.51,2.52-1.54,3.48-3.14,2.99-5,1.95-9.22-1.06-13.7-1.99-2.95-3.47-6.27-4.95-9.53-.38-.84-.31-2.42,.25-3.05,2.36-2.69,5-5.12,7.49-7.69,1.32-1.37,2.61-1.38,4.25-.48,4.71,2.6,9.44,5.15,14.27,7.51,1.05,.51,2.54,.14,3.83,.13,.27,0,.52-.33,.8-.37,5.76-.84,7.24-5.16,8.37-9.96,.8-3.38,2.07-6.65,2.99-10C57.91,.85,58.76,0,60.55,.02c3.38,.04,6.77,.02,10.15-.02,1.85-.02,2.83,.75,3.36,2.59,1.49,5.16,3.25,10.24,4.69,15.42,.5,1.79,1.61,2.36,3.04,3.22,4.82,2.91,9.03,1.89,13.4-1.03,2.8-1.87,5.97-3.18,8.91-4.85,1.67-.95,2.92-.96,4.53,.36,9.36,7.68,9.41,7.68,3.85,18.25-.37,.71-.72,1.42-1.1,2.12-3.96,7.35-4.01,7.37-.6,14.63,.42,.89,1.68,1.62,2.71,1.95,5.1,1.68,10.23,3.3,15.4,4.73,1.92,.53,2.6,1.56,2.59,3.37-.02,3.29-.05,6.57,0,9.86,.03,1.9-.81,2.82-2.66,3.34-5.17,1.46-10.32,3.01-15.39,4.77-1.18,.41-2.19,1.71-2.95,2.83-3.13,4.56-2.42,8.89,.61,13.34,2.06,3.02,3.66,6.39,5.15,9.75,.43,.97,.22,2.78-.45,3.58-2.24,2.65-4.91,4.94-7.24,7.52-1.47,1.63-2.82,1.38-4.47,.45-4.42-2.49-8.91-4.86-13.31-7.4-1.81-1.04-3.46-1.38-5.24-.1-.16,.12-.34,.26-.52,.29-5.63,.78-6.82,5.1-7.95,9.65-.88,3.56-2.01,7.08-3.28,10.53-.32,.88-1.55,1.96-2.41,2.01-3.66,.23-7.36,.29-11.01,.01-1.01-.08-2.44-1.32-2.79-2.33-1.8-5.16-3.21-10.46-5.01-15.62-.4-1.16-1.75-2.09-2.84-2.88-4.86-3.5-9.27-2.1-13.76,1.08-2.74,1.94-5.92,3.27-8.91,4.85-.61,.32-1.25,.58-2.01,.93Zm18.23-18.63c.43,.17,.81,.32,1.17,.47,4.21,1.74,8.45,3.41,12.61,5.28,.84,.38,1.64,1.42,1.94,2.33,1.59,4.81,2.95,9.7,4.54,14.52,.31,.93,1.32,1.62,2,2.42,.82-.8,2.06-1.47,2.39-2.44,1.61-4.7,2.85-9.53,4.5-14.21,.41-1.16,1.68-2.32,2.84-2.87,3.58-1.69,7.26-3.19,10.99-4.54,1.13-.41,2.73-.51,3.75-.01,4.48,2.16,8.8,4.65,13.26,6.87,.88,.44,2.1,.17,3.17,.23,0-1.14,.4-2.47-.05-3.39-2.19-4.46-4.72-8.77-6.88-13.24-.51-1.05-.4-2.68,.01-3.84,1.37-3.83,2.91-7.61,4.61-11.3,.46-.99,1.59-2,2.63-2.35,4.81-1.6,9.72-2.9,14.53-4.48,.91-.3,1.56-1.35,2.34-2.06-.76-.83-1.37-2.09-2.3-2.41-4.8-1.63-9.71-2.94-14.52-4.56-1.04-.35-2.2-1.32-2.65-2.31-1.61-3.51-2.78-7.23-4.45-10.71-.93-1.93-.95-3.42,.08-5.26,2.39-4.25,4.67-8.56,6.81-12.94,.41-.84,.29-2.3-.21-3.08-.26-.42-2-.31-2.81,.09-4.45,2.22-8.76,4.74-13.26,6.86-1.22,.58-3.06,.55-4.37,.1-3.56-1.23-6.94-2.98-10.49-4.25-1.81-.65-2.73-1.64-3.24-3.43-1.34-4.68-2.77-9.34-4.33-13.96-.31-.91-1.38-1.57-2.1-2.34-.74,.74-1.86,1.36-2.17,2.25-1.62,4.8-2.93,9.71-4.6,14.5-.38,1.1-1.59,2.2-2.69,2.73-3.41,1.61-7.02,2.79-10.4,4.45-1.94,.95-3.43,.86-5.27-.19-4.24-2.41-8.57-4.66-12.95-6.81-.77-.38-2.25-.34-2.79,.16-.5,.46-.53,1.99-.15,2.74,2.16,4.37,4.43,8.69,6.82,12.94,1.08,1.92,1.16,3.52,.13,5.55-1.61,3.18-3.06,6.49-4.1,9.89-.63,2.03-1.66,2.91-3.56,3.43-4.79,1.32-9.57,2.72-14.3,4.25-.81,.26-1.98,1.43-1.89,1.99,.15,.86,1.12,1.96,1.98,2.25,4.91,1.62,9.91,2.95,14.81,4.57,1.04,.35,2.18,1.36,2.64,2.35,1.71,3.69,3.26,7.47,4.63,11.3,.4,1.13,.42,2.74-.08,3.79-2.19,4.57-4.72,8.99-6.94,13.55-.4,.83-.27,2.31,.24,3.06,.31,.45,2,.39,2.78,0,4.45-2.22,8.82-4.62,13.22-6.95,.7-.37,1.43-.68,2.11-1.01Z" fill="#375dff"/>
+                <path d="M46.46,65.66c.01-10.9,8.45-19.35,19.32-19.35,10.84,0,19.31,8.52,19.28,19.39-.03,10.86-8.59,19.47-19.33,19.43-10.85-.04-19.28-8.56-19.27-19.47Zm7.92-.09c-.02,6.29,4.97,11.49,11.21,11.66,6.06,.17,11.5-5.18,11.55-11.34,.05-6.55-4.93-11.65-11.38-11.65-6.34,0-11.36,4.99-11.38,11.33Z" fill="#375dff"/>
               </svg>
             </div>
             <h3 class="text-xl font-bold font-[Montserrat] mb-3">Fully Customizable</h3>
@@ -474,12 +471,10 @@
               facilisis mauris. Nulla rutrum arcu sed ligula malesuada, quis condimentum eros sollicitudin.</p>
           </div>
           <div
-            class="relative border border-solid border-gray-300 rounded-md p-4 lg:p-6 group before:absolute before:content-[''] before:-top-[1px] before:-right-[1px] before:w-7 hover:before:w-12 before:h-7 hover:before:h-12 before:border-t-2 before:border-r-2 before:border-indigo-500 before:rounded-tr-md before:transition-all before:duration-300 before:ease-[ease]">
-            <div class="text-indigo-500 mb-4 group-hover:-translate-y-1 transition-all duration-300 ease-in-out">
-              <svg class="w-10 h-10 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path
-                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-                </path>
+            class="relative border border-solid border-gray-300 rounded-md p-4 lg:p-6 group before:absolute before:content-[''] before:-top-[1px] before:-right-[1px] before:w-7 hover:before:w-12 before:h-7 hover:before:h-12 before:border-t-2 before:border-r-2 before:border-blue-500 before:rounded-tr-md before:transition-all before:duration-300 before:ease-[ease]">
+            <div class="text-blue-500 mb-4 group-hover:-translate-y-1 transition-all duration-300 ease-in-out">
+              <svg id="Layer_1" class="w-10 h-10 fill-current" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 131.63 131.91">
+                <path d="M108.37,100.96v-7.75c-1.32,0-2.29,0-3.25,0q-4.42-.01-4.42-4.57c0-10.36,.07-20.73-.05-31.09-.03-2.44,.58-3.55,3.13-3.16,.78,.12,1.6-.03,2.39,.03,1.65,.12,2.44-.53,2.24-2.24-.05-.39,.04-.8-.02-1.19-.4-3.03,.2-5.2,3.98-4.48-1.34-17.06-24.7-37.25-43.32-38.35-27.04-1.6-45.5,20.9-49.86,38.04,4,.82,4.11,.82,4.03,5.52-.04,2.11,.64,2.74,2.72,2.74,5.03-.01,5.03,.08,5.03,5.03,0,10.06-.12,20.13,.07,30.19,.06,3-.94,3.93-3.74,3.56-1.16-.15-2.36-.03-3.99-.03v7.72H15.12c.67,1.96,.98,3.6,1.75,4.98,3.71,6.59,9.43,10.16,16.99,10.41,6.17,.2,12.36,.13,18.54-.04,1.12-.03,2.67-.83,3.23-1.75,2.28-3.74,5.52-5.8,9.79-5.88,7.97-.15,15.95-.25,23.92,0,6.71,.2,11.67,5.5,11.53,11.72-.15,6.71-5.25,11.5-12.31,11.52-7.48,.02-14.95-.04-22.43,.02-4.52,.04-7.92-1.91-10.16-5.69-.97-1.63-2.07-2.03-3.83-1.99-5.78,.11-11.56,.04-17.35,.04-13.5,0-24.04-8.38-27.33-21.49-.36-1.45-1.42-2.94-2.57-3.94C1.88,96.2-.03,93.23,0,89.07c.08-10.16,.02-20.33,.03-30.49,0-5.27,2.82-9.6,7.75-11.19,2.05-.66,2.73-1.84,3.33-3.66C16.86,26.44,27.12,12.78,44.01,5.11,63-3.51,81.1-1.04,97.84,11.1c11.27,8.17,18.42,19.4,22.64,32.54,.63,1.96,1.45,3.13,3.55,3.84,4.9,1.67,7.59,5.85,7.59,11,0,10.26,.02,20.53,0,30.79-.01,6.78-4.85,11.62-11.65,11.68-3.68,.03-7.36,0-11.6,0ZM15.41,73.89c0-5.28,.08-10.56-.06-15.84-.03-1.17-.6-3.14-1.29-3.32-2.13-.55-4.46-.37-5.68,2.01-.39,.76-.54,1.71-.55,2.58-.03,9.66-.02,19.32,0,28.98,0,.59,.05,1.2,.21,1.77,.8,2.91,3.15,2.94,5.51,2.89,2.72-.06,1.8-2.17,1.83-3.55,.09-5.18,.04-10.36,.04-15.54Zm100.82-.15c0,5.18,0,10.36,0,15.53,0,3.75,1.04,4.5,4.67,3.49,2.42-.67,2.85-2.43,2.84-4.6-.03-9.56-.01-19.12-.01-28.68,0-.5,.05-1.01-.02-1.49-.38-2.4-2.48-3.65-5.43-3.51-2.87,.14-1.99,2.23-2.01,3.73-.08,5.18-.03,10.35-.03,15.53Zm-39.21,50.32c3.78,0,7.56,.05,11.34-.02,2.33-.04,4.1-1,4.32-3.58,.19-2.2-1.62-4-4.21-4.02-7.36-.07-14.72-.08-22.08,0-2.63,.03-4.32,1.83-4.12,4.08,.22,2.6,1.96,3.51,4.31,3.53,3.48,.03,6.96,0,10.44,0Z" fill="#375dff"/>
               </svg>
             </div>
             <h3 class="text-xl font-bold font-[Montserrat] mb-3">Friendly Support</h3>
@@ -590,7 +585,7 @@
                 <img src="/assets/images/blog-1.jpg" alt="">
               </div>
               <p class="mb-2"><small>May 27, 2019</small></p>
-              <h3 class="text-xl text-gray-900 hover:text-indigo-600 font-bold font-[Montserrat] mb-3"><a
+              <h3 class="text-xl text-gray-900 hover:text-blue-600 font-bold font-[Montserrat] mb-3"><a
                   class="text-current" href="">Building an enduring online audience</a></h3>
               <p>Quisque ultrices non velit sit amet consectetur. Cras turpis dolor, facilisis a nibh non, ullamcorper
                 facilisis mauris. Nulla rutrum arcu.</p>
@@ -602,7 +597,7 @@
                 <img src="/assets/images/blog-2.jpg" alt="">
               </div>
               <p class="mb-2"><small>May 20, 2019</small></p>
-              <h3 class="text-xl text-gray-900 hover:text-indigo-600 font-bold font-[Montserrat] mb-3"><a
+              <h3 class="text-xl text-gray-900 hover:text-blue-600 font-bold font-[Montserrat] mb-3"><a
                   class="text-current" href="">Building a site for your small business</a></h3>
               <p>Quisque ultrices non velit sit amet consectetur. Cras turpis dolor, facilisis a nibh non, ullamcorper
                 facilisis mauris. Nulla rutrum arcu.</p>
@@ -614,7 +609,7 @@
                 <img src="/assets/images/blog-3.jpg" alt="">
               </div>
               <p class="mb-2"><small>May 13, 2019</small></p>
-              <h3 class="text-xl text-gray-900 hover:text-indigo-600 font-bold font-[Montserrat] mb-3"><a
+              <h3 class="text-xl text-gray-900 hover:text-blue-600 font-bold font-[Montserrat] mb-3"><a
                   class="text-current" href="">A day in the life of a fitness blogger</a></h3>
               <p>Quisque ultrices non velit sit amet consectetur. Cras turpis dolor, facilisis a nibh non, ullamcorper
                 facilisis mauris. Nulla rutrum arcu.</p>
@@ -639,32 +634,28 @@
         </div>
         <div class="max-w-4xl mx-auto grid grid-cols-3 gap-6 mb-12">
           <div class="relative text-center">
-            <div class="text-indigo-500 mb-4">
-              <svg class="w-10 h-10 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path
-                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-                </path>
+            <div class="text-blue-500 mb-4">
+              <svg id="Layer_1" class="w-10 h-10 fill-current mx-auto" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85.69 131.65">
+                <path d="M.01,65.65c0-17.23,0-34.47,0-51.7C.02,4.51,4.5,0,13.88,0,33.3,0,52.72,0,72.13,0c8.84,0,13.53,4.58,13.54,13.37,.03,34.97,.03,69.94,0,104.9,0,8.84-4.67,13.36-13.56,13.36-19.62,0-39.23,0-58.85,0-8.45,0-13.21-4.63-13.23-13.09-.05-17.63-.02-35.27-.02-52.9Zm77.78,26.92v-3.03c0-18.42-.07-36.85,.07-55.27,.02-2.84-.84-3.48-3.52-3.47-21,.1-42.01,.05-63.01,.06-1.06,0-2.12,.13-3.23,.2v61.5H77.79ZM8.18,100.87c-.14,.65-.25,.93-.25,1.22-.02,5.38-.04,10.76-.02,16.14,.01,4.14,1.43,5.58,5.56,5.58,19.62,.02,39.24,.02,58.86,0,3.97,0,5.43-1.48,5.46-5.39,.03-4.88-.14-9.77,.07-14.64,.11-2.6-.85-3.12-3.24-3.11-21.21,.08-42.42,.05-63.64,.05-.88,0-1.75,.09-2.79,.15Zm-.27-78.16H77.78c0-3.65,.09-7.03-.03-10.4-.1-2.85-1.7-4.38-4.58-4.38-20.22-.03-40.44-.03-60.66,0-2.88,0-4.47,1.52-4.57,4.38-.11,3.38-.03,6.76-.03,10.4Z" fill="#375dff"/>
+                <path d="M46.75,112.39c-.05,2.17-1.88,3.88-4.06,3.8-2.16-.07-3.89-1.94-3.74-4.12,.17-2.39,1.66-3.54,3.91-3.65,2.2-.11,3.95,1.77,3.89,3.97Z" fill="#375dff"/>
               </svg>
             </div>
             <p>(0091) 1111 1234567<br>(084) 2222 1234567</p>
           </div>
           <div class="relative text-center">
-            <div class="text-indigo-500 mb-4">
-              <svg class="w-10 h-10 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path
-                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-                </path>
+            <div class="text-blue-500 mb-4">
+              <svg id="Layer_1" class="w-10 h-10 fill-current mx-auto" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85.39 126.06">
+                <path d="M42.17,126.06c-5.71-7.54-11.52-14.74-16.83-22.3C15.7,90.02,7.3,75.58,2.56,59.31-1.46,45.54-1.24,32.19,6.77,19.67,15.97,5.29,33.44-2.43,49.85,.68c18,3.42,31.49,16.51,34.77,33.91,2.02,10.73-.11,21.05-3.87,31.03-8.41,22.28-21.91,41.43-37.21,59.43-.18,.21-.46,.35-1.36,1Zm.39-12.1c2.17-2.76,3.87-4.81,5.46-6.96,10.53-14.19,20.13-28.92,26-45.74,2.8-8.04,4.59-16.23,2.98-24.87-2.55-13.71-13.14-24.69-27.11-27.87-13.16-2.99-27.79,2.79-35.68,14.07-7.38,10.56-7.85,21.97-4.39,33.94,4.44,15.31,12.39,28.83,21.31,41.83,3.53,5.14,7.37,10.07,11.43,15.59Z" fill="#375dff"/>
+                <path d="M65.7,44c0,12.77-10.14,22.85-22.98,22.85-13.1,0-23.22-10.2-23.16-23.34,.05-12.63,10.35-22.9,23.05-22.98,12.97-.09,23.09,10.21,23.09,23.47Zm-22.99-15.6c-8.5,0-15.42,6.9-15.43,15.38-.01,8.39,7.01,15.34,15.49,15.32,8.28-.01,15.24-6.96,15.27-15.23,.03-8.52-6.87-15.48-15.33-15.47Z" fill="#375dff"/>
               </svg>
             </div>
             <p>69 Halsey St, New York, Ny 10002,<br>
               United States</p>
           </div>
           <div class="relative text-center">
-            <div class="text-indigo-500 mb-4">
-              <svg class="w-10 h-10 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                <path
-                  d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
-                </path>
+            <div class="text-blue-500 mb-4">
+              <svg id="Layer_1" class="w-10 h-10 fill-current mx-auto" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 131.31 100.64">
+                <path d="M131.31,100.64H0V0H131.31V100.64ZM14.89,8.06c16.59,16.98,33.72,34.51,51.1,52.29,17.2-17.56,34.29-35.01,51.21-52.29H14.89ZM50.22,55.72c-12.43,12.88-24.16,25.04-35.58,36.87H115.92c-11.5-11.65-23.28-23.57-35.71-36.16-4.63,5.03-9.38,10.19-14.6,15.85-5.34-5.74-10.13-10.9-15.4-16.56Zm-7.32-6.51C31.98,38.44,20.17,26.8,8.36,15.15c-.21,.19-.42,.37-.63,.56V86.17c12.01-12.62,23.44-24.63,35.17-36.96ZM123.32,14.54c-12.3,12.73-23.97,24.81-35.87,37.13,11.37,11.09,23.33,22.76,35.87,35V14.54Z" fill="#375dff"/>
               </svg>
             </div>
             <p>support@example.com<br>
@@ -700,7 +691,7 @@
 
               <div class="text-center mb-6">
                 <button
-                  class="text-white bg-indigo-500 hover:bg-indigo-600 font-medium py-3 px-6 rounded-md transition-colors duration-300 ease-in-out mr-1"
+                  class="text-white bg-blue-500 hover:bg-blue-600 font-medium py-3 px-6 rounded-md transition-colors duration-300 ease-in-out mr-1"
                   type="submit" id="cf-submit" name="cf-submit">Send Message</button>
               </div>
             </div>
