@@ -96,20 +96,27 @@
   @scroll.window="atElement = document.querySelector('#contact').getBoundingClientRect().top <= 0 ? 'contact' : (document.querySelector('#news').getBoundingClientRect().top <= 0 ? 'news' : (document.querySelector('#portfolio').getBoundingClientRect().top <= 0 ? 'portfolio' : (document.querySelector('#services').getBoundingClientRect().top <= 0 ? 'services' : (document.querySelector('#about').getBoundingClientRect().top <= 0 ? 'about' : 'home'))))">
 
   <!-- mobile sidebar button -->
-  <div class="nav__toggle fixed top-6 right-6 w-10 h-10 flex items-center justify-center lg:hidden bg-white z-50">
-    <button @click="sideNav = !sideNav"
-      class="cursor-pointer border-none outline-none focus:outline-none focus:bg-transparent transition-all duration-300 ease-[ease] z-30">
-      <svg class="fill-current transition duration-300 ease-in-out transform" width="22" height="24">
-        <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform"
-          :class="{ 'translate-x-1.5 translate-y-0 rotate-45': sideNav === true }" id="top" x1="0" x2="22" y1="6"
-          y2="6"></line>
-        <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform"
-          :class="{ 'opacity-0': sideNav === true }" id="middle" x1="0" x2="22" y1="12" y2="12"></line>
-        <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform"
-          :class="{ '-translate-x-[11px] translate-y-[7px] -rotate-45': sideNav === true }" id="bottom" x1="0"
-          x2="22" y1="18" y2="18"></line>
-      </svg>
-    </button>
+  <div class="nav__toggle fixed top-4 left-0 w-full flex items-center justify-center lg:hidden z-20">
+    <div class="container max-w-screen-xl px-4">
+      <div class="flex items-center justify-between">
+        <div>
+          <a class="text-xl text-gray-700 font-medium font-[Montserrat] bg-gray-100 py-4 px-3" href="">Amanda Malat</a>
+        </div>
+        <button @click="sideNav = !sideNav"
+        class="flex-none w-14 h-14 flex items-center justify-center bg-gray-100 cursor-pointer border-none outline-none focus:outline-none focus:bg-transparent transition-all duration-300 ease-[ease]">
+        <svg class="fill-current transition duration-300 ease-in-out transform" width="22" height="24">
+          <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform"
+            :class="{ 'translate-x-1.5 translate-y-0 rotate-45': sideNav === true }" id="top" x1="0" x2="22" y1="6"
+            y2="6"></line>
+          <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform"
+            :class="{ 'opacity-0': sideNav === true }" id="middle" x1="0" x2="22" y1="12" y2="12"></line>
+          <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform"
+            :class="{ '-translate-x-[11px] translate-y-[7px] -rotate-45': sideNav === true }" id="bottom" x1="0"
+            x2="22" y1="18" y2="18"></line>
+        </svg>
+      </button>
+      </div>
+    </div>
   </div>
 
   <!-- header menu -->
