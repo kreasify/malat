@@ -96,33 +96,31 @@
   @scroll.window="atElement = document.querySelector('#contact').getBoundingClientRect().top <= 0 ? 'contact' : (document.querySelector('#news').getBoundingClientRect().top <= 0 ? 'news' : (document.querySelector('#portfolio').getBoundingClientRect().top <= 0 ? 'portfolio' : (document.querySelector('#services').getBoundingClientRect().top <= 0 ? 'services' : (document.querySelector('#about').getBoundingClientRect().top <= 0 ? 'about' : 'home'))))">
 
   <!-- mobile sidebar button -->
-  <div class="nav__toggle fixed top-4 left-0 w-full flex items-center justify-center lg:hidden z-20">
-    <div class="container max-w-screen-xl px-4">
-      <div class="flex items-center justify-between">
-        <div>
-          <a class="text-xl text-gray-700 font-medium font-[Montserrat] bg-gray-100 py-4 px-3" href="">Amanda Malat</a>
-        </div>
-        <button @click="sideNav = !sideNav"
-        class="flex-none w-14 h-14 flex items-center justify-center bg-gray-100 cursor-pointer border-none outline-none focus:outline-none focus:bg-transparent transition-all duration-300 ease-[ease]">
-        <svg class="fill-current transition duration-300 ease-in-out transform" width="22" height="24">
-          <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform"
-            :class="{ 'translate-x-1.5 translate-y-0 rotate-45': sideNav === true }" id="top" x1="0" x2="22" y1="6"
-            y2="6"></line>
-          <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform"
-            :class="{ 'opacity-0': sideNav === true }" id="middle" x1="0" x2="22" y1="12" y2="12"></line>
-          <line class="stroke-current stroke-2 transition duration-500 ease-in-out transform"
-            :class="{ '-translate-x-[11px] translate-y-[7px] -rotate-45': sideNav === true }" id="bottom" x1="0"
-            x2="22" y1="18" y2="18"></line>
-        </svg>
-      </button>
-      </div>
-    </div>
+  <div class="fixed top-4 left-4 z-10">
+    <a class="block text-xl text-gray-700 font-medium font-[Montserrat] bg-gray-100 py-4 px-3" href="">Amanda Malat</a>
+  </div>
+  <div class="fixed top-4 right-4 w-14 z-30">
+    <button @click="sideNav = !sideNav"
+      class="w-14 h-14 flex items-center justify-center bg-gray-100 cursor-pointer border-none outline-none focus:outline-none focus:bg-transparent transition-all duration-300 ease-[ease]">
+      <svg class="fill-current transition duration-300 ease-in-out" width="22" height="24">
+        <line class="stroke-current stroke-2 transition duration-500 ease-in-out"
+          :class="{ 'translate-x-1.5 translate-y-0 rotate-45': sideNav === true }" id="top" x1="0" x2="22" y1="6"
+          y2="6"></line>
+        <line class="stroke-current stroke-2 transition duration-500 ease-in-out"
+          :class="{ 'opacity-0': sideNav === true }" id="middle" x1="0" x2="22" y1="12" y2="12"></line>
+        <line class="stroke-current stroke-2 transition duration-500 ease-in-out"
+          :class="{ '-translate-x-[11px] translate-y-[7px] -rotate-45': sideNav === true }" id="bottom" x1="0"
+          x2="22" y1="18" y2="18"></line>
+      </svg>
+    </button>
   </div>
 
   <!-- header menu -->
-  <header class="header fixed w-full lg:w-80 left-0 top-0 bottom-0 bg-gray-900 lg:bg-gray-50 bg-opacity-40 transition-all duration-300 ease-[ease] z-20 overflow-y-auto"
-  :class="sideNav ? 'visible' : 'invisible lg:visible'">
-    <div class="nav__wrapper bg-gray-50 transition-all duration-300 ease-[ease]" :class="sideNav ? 'ml-0' : '-ml-80 lg:ml-0'">
+  <header
+    class="header fixed w-full lg:w-80 left-0 top-0 bottom-0 bg-gray-900 bg-opacity-40 transition-all duration-300 ease-[ease] z-20 overflow-y-auto"
+    :class="sideNav ? 'visible' : 'invisible lg:visible'">
+    <div class="nav__wrapper w-80 lg:w-full bg-gray-50 transition-all duration-300 ease-[ease]"
+      :class="sideNav ? 'ml-0' : '-ml-80 lg:ml-0'">
       <div class="nav__brand text-center pt-8">
         <div class="flex items-center justify-center py-12 relative">
           <a class="nav__brand-link font-bold font-[Montserrat]" href="/" title="Back to home">
@@ -174,10 +172,8 @@
                 url: "contact",
               }
             ]
-          }'
-        class="nav__wrapper">
-        <nav
-          class="nav__menu px-2">
+          }' class="nav__wrapper">
+        <nav class="nav__menu px-2">
           <ul class="menu">
 
             <template x-for="(menu, index) in menus" :key="menu.id">
