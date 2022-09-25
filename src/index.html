@@ -3,9 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Team | Rough</title>
+  <title>Malat HTML</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,95 +12,21 @@
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Roboto:wght@400;500;700&display=swap"
     rel="stylesheet">
 
-  <script defer src="https://unpkg.com/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
   <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
-
-  <style>
-    @keyframes fadeInUp {
-      0% {
-        opacity: 0;
-        transform: translateY(50%);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .fadeInUp {
-      animation: fadeInUp 1s;
-    }
-
-    @keyframes fadeInLeft {
-      0% {
-        opacity: 0;
-        transform: translateX(-100%);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .fadeInLeft {
-      animation: fadeInLeft 1s;
-    }
-
-    @keyframes fadeInRight {
-      0% {
-        opacity: 0;
-        transform: translateX(100%);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    .fadeInRight {
-      animation: fadeInRight 1s;
-    }
-
-    @keyframes scale {
-      0% {
-        opacity: 0;
-        transform: scale(0.5);
-      }
-
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    .scale {
-      animation: scale 1s;
-    }
-
-    @media (prefers-reduced-motion) {
-
-      .fadeInUp,
-      .scale {
-        animation: none;
-      }
-    }
-  </style>
+  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
 
 </head>
 
-<body x-data="{sideNav: false, atElement: 'home'}" class="font-[roboto]"
-  @scroll.window="atElement = document.querySelector('#contact').getBoundingClientRect().top <= 0 ? 'contact' : (document.querySelector('#news').getBoundingClientRect().top <= 0 ? 'news' : (document.querySelector('#portfolio').getBoundingClientRect().top <= 0 ? 'portfolio' : (document.querySelector('#services').getBoundingClientRect().top <= 0 ? 'services' : (document.querySelector('#about').getBoundingClientRect().top <= 0 ? 'about' : 'home'))))">
+<body x-data="{sideNav: false, atElement: 'home'}" class="font-[roboto]" :class="{ 'overflow-hidden': sideNav }"
+  @scroll.window="atElement = document.querySelector('#contact').getBoundingClientRect().top <= 100 ? 'contact' : (document.querySelector('#news').getBoundingClientRect().top <= 100 ? 'news' : (document.querySelector('#portfolio').getBoundingClientRect().top <= 100 ? 'portfolio' : (document.querySelector('#services').getBoundingClientRect().top <= 100 ? 'services' : (document.querySelector('#about').getBoundingClientRect().top <= 100 ? 'about' : 'home'))))">
 
   <!-- mobile sidebar button -->
   <div class="fixed top-4 left-4 z-10">
     <a class="block text-xl text-gray-700 font-medium font-[Montserrat] bg-gray-100 py-4 px-3" href="">Amanda Malat</a>
   </div>
-  <div class="fixed top-4 right-4 w-14 z-30">
+  <div class="fixed xl:hidden top-4 right-4 w-14 z-30">
     <button @click="sideNav = !sideNav"
-      class="w-14 h-14 flex items-center justify-center bg-gray-100 cursor-pointer border-none outline-none focus:outline-none focus:bg-transparent transition-all duration-300 ease-[ease]">
+      class="w-14 h-14 flex items-center justify-center bg-gray-100 cursor-pointer border-none outline-none focus:outline-none transition-all duration-300 ease-[ease]">
       <svg class="fill-current transition duration-300 ease-in-out" width="22" height="24">
         <line class="stroke-current stroke-2 transition duration-500 ease-in-out"
           :class="{ 'translate-x-1.5 translate-y-0 rotate-45': sideNav === true }" id="top" x1="0" x2="22" y1="6"
@@ -109,18 +34,18 @@
         <line class="stroke-current stroke-2 transition duration-500 ease-in-out"
           :class="{ 'opacity-0': sideNav === true }" id="middle" x1="0" x2="22" y1="12" y2="12"></line>
         <line class="stroke-current stroke-2 transition duration-500 ease-in-out"
-          :class="{ '-translate-x-[11px] translate-y-[7px] -rotate-45': sideNav === true }" id="bottom" x1="0"
-          x2="22" y1="18" y2="18"></line>
+          :class="{ '-translate-x-[11px] translate-y-[7px] -rotate-45': sideNav === true }" id="bottom" x1="0" x2="22"
+          y1="18" y2="18"></line>
       </svg>
     </button>
   </div>
 
   <!-- header menu -->
   <header
-    class="header fixed w-full lg:w-80 left-0 top-0 bottom-0 bg-gray-900 bg-opacity-40 transition-all duration-300 ease-[ease] z-20 overflow-y-auto"
-    :class="sideNav ? 'visible' : 'invisible lg:visible'">
-    <div class="nav__wrapper w-80 lg:w-full bg-gray-50 transition-all duration-300 ease-[ease]"
-      :class="sideNav ? 'ml-0' : '-ml-80 lg:ml-0'">
+    class="header fixed w-full xl:w-80 left-0 top-0 bottom-0 flex bg-gray-900 bg-opacity-40 transition-all duration-300 ease-[ease] z-20 overflow-y-auto"
+    :class="sideNav ? 'visible' : 'invisible xl:visible'">
+    <div class="nav__wrapper flex-none w-80 h-full xl:w-full bg-gray-50 transition-all duration-300 ease-[ease]"
+      :class="sideNav ? 'ml-0' : '-ml-80 xl:ml-0'">
       <div class="nav__brand text-center pt-8">
         <div class="flex items-center justify-center py-12 relative">
           <a class="nav__brand-link font-bold font-[Montserrat]" href="/" title="Back to home">
@@ -139,37 +64,37 @@
                 id: 1,
                 label: "Home",
                 element: "home",
-                url: "/"
+                url: "#home"
               },
               {
                 id: 2,
                 label: "About",
                 element: "about",
-                url: "about"
+                url: "#about"
               },
               {
                 id: 3,
                 label: "Services",
                 element: "services",
-                url: "services"
+                url: "#services"
               },
               {
                 id: 4,
                 label: "Portfolio",
                 element: "portfolio",
-                url: "portfolio"
+                url: "#portfolio"
               },
               {
                 id: 5,
                 label: "News",
                 element: "news",
-                url: "news"
+                url: "#news"
               },
               {
                 id: 6,
                 label: "Contact",
                 element: "contact",
-                url: "contact",
+                url: "#contact",
               }
             ]
           }' class="nav__wrapper">
@@ -193,7 +118,7 @@
           <li>
             <a class="text-black hover:text-white hover:bg-black w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-300 ease-in-out"
               href="https://www.facebook.com/evernote/">
-              <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+              <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                 <path
                   d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
                 </path>
@@ -204,7 +129,7 @@
           <li>
             <a class="text-black hover:text-white hover:bg-black w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-300 ease-in-out"
               href="https://twitter.com/evernote">
-              <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                 <path
                   d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
                 </path>
@@ -215,7 +140,7 @@
           <li>
             <a class="text-black hover:text-white hover:bg-black w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-300 ease-in-out"
               href="https://www.instagram.com/evernote">
-              <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+              <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                 <path
                   d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
                 </path>
@@ -226,7 +151,7 @@
           <li>
             <a class="text-black hover:text-white hover:bg-black w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-300 ease-in-out"
               href="https://www.youtube.com/channel/UCr_JcNR6slxFcTtDZ8t6F0A">
-              <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+              <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                 <path
                   d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
                 </path>
@@ -237,6 +162,7 @@
         </ul>
       </div>
     </div>
+    <div @click="sideNav = false" class="flex-1 h-full lg:hidden cursor-pointer"></div>
   </header>
 
   <!-- slider images section -->
@@ -256,39 +182,36 @@
       x-transition:enter-start="opacity-0 scale-[2]" x-transition:enter-end="opacity-100 scale-100"
       x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100"
       x-transition:leave-end="opacity-0"
-      class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/assets/images/image-1.jpg')]">
+      class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('./images/image-1.jpg')]">
     </div>
     <div x-show="point == 1" x-transition:enter="transition ease-[ease] duration-[4000ms]"
       x-transition:enter-start="opacity-0 scale-[2]" x-transition:enter-end="opacity-100 scale-100"
       x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100"
       x-transition:leave-end="opacity-0"
-      class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/assets/images/image-2.jpg')]">
+      class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('./images/image-2.jpg')]">
     </div>
     <div x-show="point == 2" x-transition:enter="transition ease-[ease] duration-[4000ms]"
       x-transition:enter-start="opacity-0 scale-[2]" x-transition:enter-end="opacity-100 scale-100"
       x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100"
       x-transition:leave-end="opacity-0"
-      class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/assets/images/image-3.jpg')]">
+      class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('./images/image-3.jpg')]">
     </div>
     <div x-show="point == 3" x-transition:enter="transition ease-[ease] duration-[4000ms]"
       x-transition:enter-start="opacity-0 scale-[2]" x-transition:enter-end="opacity-100 scale-100"
       x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100"
       x-transition:leave-end="opacity-0"
-      class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/assets/images/image-4.jpg')]">
+      class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('./images/image-4.jpg')]">
     </div>
     <div x-show="point == 4" x-transition:enter="transition ease-[ease] duration-[4000ms]"
       x-transition:enter-start="opacity-0 scale-[2]" x-transition:enter-end="opacity-100 scale-100"
       x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100"
       x-transition:leave-end="opacity-0"
-      class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('/assets/images/image-5.jpg')]">
+      class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden bg-cover bg-center bg-no-repeat bg-[url('./images/image-5.jpg')]">
     </div>
+    <div class="absolute top-0 left-0 right-0 bottom-0 bg-slate-900/50"></div>
   </section>
 
-  <div class="lg:ml-80 shadow-[0_0_320px_rgb(0_0_0_/_3%),_0_0_27px_rgb(0_0_0_/_20%)]">
-    <section>
-      <div class="absolute top-0 left-0 right-0 bottom-0 bg-slate-900/50"></div>
-    </section>
-
+  <div class="xl:ml-80 shadow-[0_0_320px_rgb(0_0_0_/_3%),_0_0_27px_rgb(0_0_0_/_20%)]">
     <!-- amanda malat section -->
     <section id="home">
       <div class="min-h-screen flex items-center justify-center text-center text-white">
@@ -297,7 +220,7 @@
             <div
               class="absolute top-0 left-1/2 bottom-0 right-0 bg-white rounded-tr-full rounded-br-full -mt-2 -mr-2 -mb-2">
             </div>
-            <img class="relative w-36 h-36 rounded-full" src="/assets/images/avatar_small.jpg" alt="">
+            <img class="relative w-36 h-36 rounded-full" src="./images/avatar_small.jpg" alt="">
           </div>
           <h1 class="text-5xl font-bold mb-3">Amanda Malat</h1>
           <p>UI/UX Designer</p>
@@ -319,7 +242,7 @@
         </div>
         <div class="lg:grid lg:grid-cols-3 lg:gap-8">
           <div class="hidden lg:block rounded-md overflow-hidden">
-            <img class="rounded-md" src="/assets/images/avatar.jpg" alt="">
+            <img class="rounded-md" src="./images/avatar.jpg" alt="">
           </div>
           <div class="lg:col-span-2">
             <h3 class="text-2xl font-bold font-[Montserrat] mb-3">Amanda Malat</h3>
@@ -327,7 +250,7 @@
             <p>I’m Amanda Malat a marketing specialist with over five years work experience. Donec sed fringilla lectus,
               non vulputate orci. Integer id libero euismod, interdum ligula vel, porttitor magna. Sed euismod maximus
               finibus. Pellentesque tempus ultricies nisi at cursus. Nulla at nisi tellus. Suspendisse potenti.</p>
-            <div class="grid grid-cols-2 gap-6 mt-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
               <div>
                 <h4 class="text-xl font-bold font-[Montserrat] mb-3">Education</h4>
                 <p class="font-bold mb-2">MA Online Marketing</p>
@@ -342,12 +265,12 @@
                 <p class="font-bold mt-3 mb-2">Highly Commended</p>
                 <p>Women in Business, 2010</p>
               </div>
-              <div class="pt-8">
-                <a class="text-white bg-blue-500 hover:bg-blue-600 font-medium py-3 px-6 rounded-md transition-colors duration-300 ease-in-out mr-1"
-                  href="">Download CV</a>
-                <a class="text-gray-700 bg-gray-100 hover:bg-gray-200 font-medium py-3 px-6 rounded-md transition-colors duration-300 ease-in-out"
-                  href="">Send Message</a>
-              </div>
+            </div>
+            <div class="pt-8">
+              <a class="text-white bg-blue-500 hover:bg-blue-600 font-medium py-3 px-6 rounded-md transition-colors duration-300 ease-in-out mr-1"
+                href="">Download CV</a>
+              <a class="text-gray-700 bg-gray-100 hover:bg-gray-200 font-medium py-3 px-6 rounded-md transition-colors duration-300 ease-in-out"
+                href="">Send Message</a>
             </div>
           </div>
         </div>
@@ -367,7 +290,7 @@
           <p>Fusce massa dolor, mattis sed ultrices ut, placerat ut leo. Donec sed fringilla lectus, non vulputate orci.
             Integer id libero euismod, interdum ligula vel, porttitor magna. Sed euismod maximus finibus.</p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8">
           <div>
             <div class="text-gray-700 font-bold mb-6">
               <p class="mb-2">Social Media</p>
@@ -414,31 +337,31 @@
             <h4 class="text-xl font-bold font-[Montserrat] mb-3">Marketing Manager</h4>
             <p class="text-gray-500">West House Productions, 2015 - 2020</p>
           </div>
-          <div class="col-span-2">
+          <div class="lg:col-span-2">
             <p>Brief description of the position and the responsibilities you had in this post. Fusce massa dolor,
               mattis sed ultrices ut, placerat ut leo. Donec sed fringilla lectus, non vulputate orci. Integer id libero
               euismod, interdum ligula vel, porttitor magna. Sed euismod maximus finibus. Pellentesque tempus ultricies
               nisi at cursus. Nulla at nisi tellus. Suspendisse potenti.</p>
           </div>
         </div>
-        <div class="grid grid-cols-3 gap-x-8 border-b border-solid border-gray-300 pb-4 mb-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 border-b border-solid border-gray-300 pb-4 mb-4">
           <div>
             <h4 class="text-xl font-bold font-[Montserrat] mb-3">Marketing Consultant</h4>
             <p class="text-gray-500">Jump High Marketing, 2012 - 2015</p>
           </div>
-          <div class="col-span-2">
+          <div class="lg:col-span-2">
             <p>Brief description of the position and the responsibilities you had in this post. Fusce massa dolor,
               mattis sed ultrices ut, placerat ut leo. Donec sed fringilla lectus, non vulputate orci. Integer id libero
               euismod, interdum ligula vel, porttitor magna. Sed euismod maximus finibus. Pellentesque tempus ultricies
               nisi at cursus. Nulla at nisi tellus. Suspendisse potenti.</p>
           </div>
         </div>
-        <div class="grid grid-cols-3 gap-x-8 pb-4 mb-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 pb-4 mb-4">
           <div>
             <h4 class="text-xl font-bold font-[Montserrat] mb-3">Product Manager</h4>
             <p class="text-gray-500">Trident Prototyping Studios, 2007 - 2011</p>
           </div>
-          <div class="col-span-2">
+          <div class="lg:col-span-2">
             <p>Brief description of the position and the responsibilities you had in this post. Fusce massa dolor,
               mattis sed ultrices ut, placerat ut leo. Donec sed fringilla lectus, non vulputate orci. Integer id libero
               euismod, interdum ligula vel, porttitor magna. Sed euismod maximus finibus. Pellentesque tempus ultricies
@@ -461,7 +384,7 @@
           <p>Fusce massa dolor, mattis sed ultrices ut, placerat ut leo. Donec sed fringilla lectus, non vulputate orci.
             Integer id libero euismod, interdum ligula vel, porttitor magna. Sed euismod maximus finibus.</p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <div
             class="relative border border-solid border-gray-300 rounded-md p-4 lg:p-6 group before:absolute before:content-[''] before:-top-[1px] before:-right-[1px] before:w-7 hover:before:w-12 before:h-7 hover:before:h-12 before:border-t-2 before:border-r-2 before:border-blue-500 before:rounded-tr-md before:transition-all before:duration-300 before:ease-[ease]">
             <div class="text-blue-500 mb-4 group-hover:-translate-y-1 transition-all duration-300 ease-in-out">
@@ -623,7 +546,7 @@
               x-transition:leave="transition ease-[ease] duration-500" x-transition:leave-start="opacity-100 scale-100"
               x-transition:leave-end="opacity-100 scale-0"
               class="relative group transition-all duration-300 ease-[ease] mb-4">
-              <img :src="`/assets/images/${project.image}`" :alt="project.title">
+              <img :src="`./images/${project.image}`" :alt="project.title">
               <div
                 class="absolute left-0 top-0 w-full h-full px-6 py-6 overflow-hidden group-hover:bg-slate-900/70 transition-all duration-500 ease-[ease] flex items-end">
                 <div class="text-white font-bold">
@@ -638,85 +561,256 @@
     </section>
 
     <!-- testimony section -->
-    <section x-data='{
-        reviews: [
-          { "id": 0, "name": "Jessica Nelson", "position": "Director Business Planning, Amazon", "image": "avatar_small.jpg", "text": "Nulla consequat nulla vitae enim venenatis, vel vulputate mi commodo. Pellentesque consequat at justo quis vulputate. Maecenas elementum metus eu maximus auctor. Morbi ultrices quam rhoncus purus bibendum ornare. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." },
-          { "id": 1, "name": "Jessica Nelson", "position": "Director Business Planning, Amazon", "image": "avatar_small.jpg", "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." },
-          { "id": 2, "name": "Jessica Nelson", "position": "Director Business Planning, Amazon", "image": "avatar_small.jpg", "text": "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum." }
-        ],
-        point: 0,
-        init() {
-          setInterval(() => {
-            if(this.point < this.reviews.length - 1){
-              this.point ++;
-            }else{
-              this.point = 0;
-            }
-          }, 3000);
-        }
-      }' class="bg-white relative bg-no-repeat bg-cover bg-center bg-[url('/assets/images/image-1.jpg')]">
+    <section x-data="{
+      init() {
+        new Splide(this.$refs.slider, {
+            type   : 'loop',
+            autoplay: true,
+            interval: 3000,
+            arrows: false,
+            classes: {
+              pagination: 'splide__pagination pt-8',
+              page: 'splide__pagination__page bg-white w-3 h-3 rounded-sm transition-all duration-300 ease-in-out my-1 mx-2',
+          },
+          }).mount()
+        },
+      }" class="bg-white relative bg-no-repeat bg-cover bg-center bg-[url('./images/image-1.jpg')]">
       <div class="bg-black/70">
-        <div class="container max-w-5xl mx-auto py-24">
-          <div class="relative w-full flex group overflow-hidden px-6 lg:px-16">
-            <template x-for="review in reviews" :key="review.id">
-              <div class="w-full -mr-[100%]"
-                :class="review.id == point ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'">
+        <div class="splide container max-w-5xl mx-auto py-24 px-6 lg:px-16" x-ref="slider">
+          <div class="splide__track">
+            <ul class="splide__list group px-6 lg:px-16">
+              <li class="splide__slide">
                 <div class="text-white mb-8">
                   <svg class="w-8 h-8 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                     <path
-                      d="M96 96C42.98 96 0 138.1 0 192s42.98 96 96 96c11.28 0 21.95-2.305 32-5.879V288c0 35.3-28.7 64-64 64c-17.67 0-32 14.33-32 32s14.33 32 32 32c70.58 0 128-57.42 128-128V192C192 138.1 149 96 96 96zM448 192c0-53.02-42.98-96-96-96s-96 42.98-96 96s42.98 96 96 96c11.28 0 21.95-2.305 32-5.879V288c0 35.3-28.7 64-64 64c-17.67 0-32 14.33-32 32s14.33 32 32 32c70.58 0 128-57.42 128-128V192z" />
+                      d="M96 96C42.98 96 0 138.1 0 192s42.98 96 96 96c11.28 0 21.95-2.305 32-5.879V288c0 35.3-28.7 64-64 64c-17.67 0-32 14.33-32 32s14.33 32 32 32c70.58 0 128-57.42 128-128V192C192 138.1 149 96 96 96zM448 192c0-53.02-42.98-96-96-96s-96 42.98-96 96s42.98 96 96 96c11.28 0 21.95-2.305 32-5.879V288c0 35.3-28.7 64-64 64c-17.67 0-32 14.33-32 32s14.33 32 32 32c70.58 0 128-57.42 128-128V192z">
+                    </path>
                   </svg>
                 </div>
                 <div class="text-white text-center">
-                  <blockquote x-text="review.text"></blockquote>
+                  <blockquote>Nulla consequat nulla vitae enim venenatis, vel vulputate mi commodo. Pellentesque
+                    consequat at justo quis vulputate. Maecenas elementum metus eu maximus auctor. Morbi ultrices quam
+                    rhoncus purus bibendum ornare. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu fugiat nulla pariatur.</blockquote>
                   <div class="inline-flex space-x-4 pt-6">
                     <div class="flex-none w-12 h-12 rounded-full overflow-hidden">
-                      <img :src="`assets/images/${review.image}`" :alt="review.name">
+                      <img src="assets/images/avatar_small.jpg" alt="Jessica Nelson">
                     </div>
                     <div class="text-left">
-                      <h4 class="font-bold mb-1" x-text="review.name"></h4>
-                      <p><small x-text="review.position"></small></p>
+                      <h4 class="font-bold mb-1">Jessica Nelson</h4>
+                      <p><small>Director Business Planning, Amazon</small></p>
                     </div>
                   </div>
                 </div>
-              </div>
-            </template>
-            <div class="product__arrow w-full block"><button
-                class="absolute w-10 h-10 left-0 top-1/2 text-center text-gray-50 hover:text-white bg-gray-500 hover:bg-gray-400 hover:shadow-lg transition duration-300 ease-in-out focus:outline-none transform opacity-0 -translate-x-20 group-hover:translate-x-0 group-hover:opacity-70"
-                x-on:click="point = reviews[point].id === 0 ? 3 - 1 : point - 1">
-                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-left" role="img"
-                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"
-                  class="svg-inline--fa fa-angle-left fa-w-6 fa-2x inline-block w-6 h-6">
-                  <path fill="currentcolor"
-                    d="M4.2 247.5 151 99.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3.0 17L69.3 256l118.5 119.7c4.7 4.7 4.7 12.3.0 17L168 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 264.5c-4.7-4.7-4.7-12.3.0-17z">
-                  </path>
-                </svg>
-              </button>
-              <button
-                class="absolute w-10 h-10 right-0 top-1/2 text-center text-gray-50 hover:text-white bg-gray-500 hover:bg-gray-400 hover:shadow-lg transition duration-300 ease-in-out focus:outline-none transform opacity-0 translate-x-20 group-hover:translate-x-0 group-hover:opacity-70"
-                x-on:click="point = reviews[point].id === 3 - 1 ? 0 : point + 1">
-                <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="angle-right" role="img"
-                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512"
-                  class="svg-inline--fa fa-angle-right fa-w-6 fa-2x inline-block w-6 h-6">
-                  <path fill="currentcolor"
-                    d="M187.8 264.5 41 412.5c-4.7 4.7-12.3 4.7-17 0L4.2 392.7c-4.7-4.7-4.7-12.3.0-17L122.7 256 4.2 136.3c-4.7-4.7-4.7-12.3.0-17L24 99.5c4.7-4.7 12.3-4.7 17 0l146.8 148c4.7 4.7 4.7 12.3.0 17z">
-                  </path>
-                </svg>
-              </button>
-            </div>
-          </div>
-          <div class="text-center pt-12">
-            <ul class="inline-flex space-x-3 cursor-pointer">
-              <template x-for="review in reviews" :key="review.id">
-                <li x-on:click="point = review.id">
-                  <div class="w-3 h-3 bg-white rounded-sm"
-                    :class="review.id == point ? 'opacity-100 scale-150' : 'opacity-70 hover:opacity-100'"></div>
-                </li>
-              </template>
+              </li>
+              <li class="splide__slide">
+                <div class="text-white mb-8">
+                  <svg class="w-8 h-8 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      d="M96 96C42.98 96 0 138.1 0 192s42.98 96 96 96c11.28 0 21.95-2.305 32-5.879V288c0 35.3-28.7 64-64 64c-17.67 0-32 14.33-32 32s14.33 32 32 32c70.58 0 128-57.42 128-128V192C192 138.1 149 96 96 96zM448 192c0-53.02-42.98-96-96-96s-96 42.98-96 96s42.98 96 96 96c11.28 0 21.95-2.305 32-5.879V288c0 35.3-28.7 64-64 64c-17.67 0-32 14.33-32 32s14.33 32 32 32c70.58 0 128-57.42 128-128V192z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="text-white text-center">
+                  <blockquote>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                    commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.</blockquote>
+                  <div class="inline-flex space-x-4 pt-6">
+                    <div class="flex-none w-12 h-12 rounded-full overflow-hidden">
+                      <img src="assets/images/avatar_small.jpg" alt="Jessica Nelson">
+                    </div>
+                    <div class="text-left">
+                      <h4 class="font-bold mb-1">Jessica Nelson</h4>
+                      <p><small>Director Business Planning, Amazon</small></p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="splide__slide">
+                <div class="text-white mb-8">
+                  <svg class="w-8 h-8 fill-current mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                    <path
+                      d="M96 96C42.98 96 0 138.1 0 192s42.98 96 96 96c11.28 0 21.95-2.305 32-5.879V288c0 35.3-28.7 64-64 64c-17.67 0-32 14.33-32 32s14.33 32 32 32c70.58 0 128-57.42 128-128V192C192 138.1 149 96 96 96zM448 192c0-53.02-42.98-96-96-96s-96 42.98-96 96s42.98 96 96 96c11.28 0 21.95-2.305 32-5.879V288c0 35.3-28.7 64-64 64c-17.67 0-32 14.33-32 32s14.33 32 32 32c70.58 0 128-57.42 128-128V192z">
+                    </path>
+                  </svg>
+                </div>
+                <div class="text-white text-center">
+                  <blockquote>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione iure perferendis atque
+                    ullam. Sit laborum neque ipsam mollitia quam consequatur illo, magni nobis dolore quos totam iusto
+                    odit dicta, molestias vel sapiente facere fuga reprehenderit natus? Non excepturi sed quis quam
+                    sequi.</blockquote>
+                  <div class="inline-flex space-x-4 pt-6">
+                    <div class="flex-none w-12 h-12 rounded-full overflow-hidden">
+                      <img src="assets/images/avatar_small.jpg" alt="Jessica Nelson">
+                    </div>
+                    <div class="text-left">
+                      <h4 class="font-bold mb-1">Jessica Nelson</h4>
+                      <p><small>Director Business Planning, Amazon</small></p>
+                    </div>
+                  </div>
+                </div>
+              </li>
             </ul>
           </div>
         </div>
       </div>
+      <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.2/dist/js/splide.min.js"></script>
+      <style>
+        @keyframes splide-loading {
+          0% {
+            transform: rotate(0)
+          }
+
+          to {
+            transform: rotate(1turn)
+          }
+        }
+
+        .splide__track--draggable {
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -ms-user-select: none;
+          user-select: none
+        }
+
+        .splide__track--fade>.splide__list>.splide__slide {
+          margin: 0 !important;
+          opacity: 0;
+          z-index: 0
+        }
+
+        .splide__track--fade>.splide__list>.splide__slide.is-active {
+          opacity: 1;
+          z-index: 1
+        }
+
+        .splide--rtl {
+          direction: rtl
+        }
+
+        .splide__track--ttb>.splide__list {
+          display: block
+        }
+
+        .splide__container {
+          box-sizing: border-box;
+          position: relative
+        }
+
+        .splide__list {
+          backface-visibility: hidden;
+          display: -ms-flexbox;
+          display: flex;
+          height: 100%;
+          margin: 0 !important;
+          padding: 0 !important
+        }
+
+        .splide.is-initialized:not(.is-active) .splide__list {
+          display: block
+        }
+
+        .splide__pagination {
+          -ms-flex-align: center;
+          align-items: center;
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+          -ms-flex-pack: center;
+          justify-content: center;
+          margin: 0;
+          pointer-events: none
+        }
+
+        .splide__pagination__page.is-active {
+          transform: scale(1.5);
+        }
+
+        .splide__pagination li {
+          display: inline-block;
+          line-height: 1;
+          list-style-type: none;
+          margin: 0;
+          pointer-events: auto
+        }
+
+        .splide:not(.is-overflow) .splide__pagination {
+          display: none
+        }
+
+        .splide__progress__bar {
+          width: 0
+        }
+
+        .splide {
+          position: relative;
+          visibility: hidden
+        }
+
+        .splide.is-initialized,
+        .splide.is-rendered {
+          visibility: visible
+        }
+
+        .splide__slide {
+          backface-visibility: hidden;
+          box-sizing: border-box;
+          -ms-flex-negative: 0;
+          flex-shrink: 0;
+          list-style-type: none !important;
+          margin: 0;
+          position: relative
+        }
+
+        .splide__slide img {
+          vertical-align: bottom
+        }
+
+        .splide__spinner {
+          animation: splide-loading 1s linear infinite;
+          border: 2px solid #999;
+          border-left-color: transparent;
+          border-radius: 50%;
+          bottom: 0;
+          contain: strict;
+          display: inline-block;
+          height: 20px;
+          left: 0;
+          margin: auto;
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 20px
+        }
+
+        .splide__sr {
+          clip: rect(0 0 0 0);
+          border: 0;
+          height: 1px;
+          margin: -1px;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+          width: 1px
+        }
+
+        .splide__toggle.is-active .splide__toggle__play,
+        .splide__toggle__pause {
+          display: none
+        }
+
+        .splide__toggle.is-active .splide__toggle__pause {
+          display: inline
+        }
+
+        .splide__track {
+          overflow: hidden;
+          position: relative;
+          z-index: 0
+        }
+      </style>
     </section>
 
     <!-- news section -->
@@ -728,11 +822,11 @@
             <span class="text-black/10 text-8xl">L</span>
           </div>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
             <article>
               <div class="mb-4">
-                <img src="/assets/images/blog-1.jpg" alt="">
+                <img src="./images/blog-1.jpg" alt="">
               </div>
               <p class="mb-2"><small>May 27, 2019</small></p>
               <h3 class="text-xl text-gray-900 hover:text-blue-600 font-bold font-[Montserrat] mb-3"><a
@@ -744,7 +838,7 @@
           <div>
             <article>
               <div class="mb-4">
-                <img src="/assets/images/blog-2.jpg" alt="">
+                <img src="./images/blog-2.jpg" alt="">
               </div>
               <p class="mb-2"><small>May 20, 2019</small></p>
               <h3 class="text-xl text-gray-900 hover:text-blue-600 font-bold font-[Montserrat] mb-3"><a
@@ -756,7 +850,7 @@
           <div>
             <article>
               <div class="mb-4">
-                <img src="/assets/images/blog-3.jpg" alt="">
+                <img src="./images/blog-3.jpg" alt="">
               </div>
               <p class="mb-2"><small>May 13, 2019</small></p>
               <h3 class="text-xl text-gray-900 hover:text-blue-600 font-bold font-[Montserrat] mb-3"><a
@@ -782,7 +876,7 @@
           <p>Fusce massa dolor, mattis sed ultrices ut, placerat ut leo. Donec sed fringilla lectus, non vulputate orci.
             Integer id libero euismod, interdum ligula vel, porttitor magna. Sed euismod maximus finibus.</p>
         </div>
-        <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+        <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           <div class="relative text-center">
             <div class="text-blue-500 mb-4">
               <svg id="Layer_1" class="w-10 h-10 fill-current mx-auto" data-name="Layer 1"
@@ -871,7 +965,7 @@
             <li>
               <a class="text-black hover:text-white hover:bg-black w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-300 ease-in-out"
                 href="https://www.facebook.com/evernote/">
-                <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                   <path
                     d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z">
                   </path>
@@ -882,7 +976,7 @@
             <li>
               <a class="text-black hover:text-white hover:bg-black w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-300 ease-in-out"
                 href="https://twitter.com/evernote">
-                <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                   <path
                     d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z">
                   </path>
@@ -893,7 +987,7 @@
             <li>
               <a class="text-black hover:text-white hover:bg-black w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-300 ease-in-out"
                 href="https://www.instagram.com/evernote">
-                <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                   <path
                     d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z">
                   </path>
@@ -904,7 +998,7 @@
             <li>
               <a class="text-black hover:text-white hover:bg-black w-8 h-8 flex items-center justify-center rounded-full transition-colors duration-300 ease-in-out"
                 href="https://www.youtube.com/channel/UCr_JcNR6slxFcTtDZ8t6F0A">
-                <svg class="w-3 h-3 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                   <path
                     d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z">
                   </path>
@@ -918,6 +1012,16 @@
       </div>
     </section>
   </div>
+  <section>
+    <div class="fixed right-10 bottom-6">
+      <a class="text-white bg-blue-500 rounded-md w-10 h-10 flex items-center justify-center" href="#home">
+        <svg class="fill-current w-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+          <path
+            d="M214.6 41.4c-12.5-12.5-32.8-12.5-45.3 0l-160 160c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 141.2V448c0 17.7 14.3 32 32 32s32-14.3 32-32V141.2L329.4 246.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-160-160z" />
+        </svg>
+      </a>
+    </div>
+  </section>
 
   <script type="module" src="/assets/js/main.js"></script>
 </body>
